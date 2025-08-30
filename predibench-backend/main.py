@@ -1,70 +1,22 @@
 import os
-import time
 from datetime import datetime
-from functools import lru_cache, wraps
+from functools import lru_cache
 
 import numpy as np
 import pandas as pd
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from predibench.agent.dataclasses import ModelInvestmentDecisions
-from predibench.brier import BrierScoreCalculator
-from predibench.pnl import PnlCalculator, get_pnls
 from predibench.polymarket_api import (
     Event,
-    EventsRequestParameters,
     _HistoricalTimeSeriesRequestParameters,
 )
-from predibench.storage_utils import get_bucket
-from pydantic import BaseModel
+
+from models.schemas import LeaderboardEntry, Stats
+from services.calculations import get_leaderboard, get_events_that_received_predictions
+from services.data_loader import load_agent_choices, get_events_by_ids
+from services.position_analytics import get_positions_df, get_all_markets_pnls
 
 print("Successfully imported predibench modules")
-
-
-def profile_time(func):
-    """Decorator to profile function execution time"""
-
-    @wraps(func)
-    def async_wrapper(*args, **kwargs):
-        start_time = time.time()
-        try:
-            result = func(*args, **kwargs)
-            end_time = time.time()
-            execution_time = end_time - start_time
-            print(f"[PROFILE] {func.__name__} took {execution_time:.4f}s")
-            return result
-        except Exception as e:
-            end_time = time.time()
-            execution_time = end_time - start_time
-            print(
-                f"[PROFILE] {func.__name__} failed after {execution_time:.4f}s - {str(e)}"
-            )
-            raise
-
-    @wraps(func)
-    def sync_wrapper(*args, **kwargs):
-        start_time = time.time()
-        try:
-            result = func(*args, **kwargs)
-            end_time = time.time()
-            execution_time = end_time - start_time
-            print(f"[PROFILE] {func.__name__} took {execution_time:.4f}s")
-            return result
-        except Exception as e:
-            end_time = time.time()
-            execution_time = end_time - start_time
-            print(
-                f"[PROFILE] {func.__name__} failed after {execution_time:.4f}s - {str(e)}"
-            )
-            raise
-
-    # Return appropriate wrapper based on whether function is async
-    import inspect
-
-    if inspect.iscoroutinefunction(func):
-        return async_wrapper
-    else:
-        return sync_wrapper
 
 
 app = FastAPI(title="Polymarket LLM Benchmark API", version="1.0.0")
@@ -88,292 +40,20 @@ app.add_middleware(
 AGENT_CHOICES_REPO = "Sibyllic/predibench-3"
 
 
-# Data models
-class DataPoint(BaseModel):
-    date: str
-    value: float
-
-
-class LeaderboardEntry(BaseModel):
-    id: str
-    model: str
-    final_cumulative_pnl: float
-    trades: int
-    profit: int
-    lastUpdated: str
-    trend: str
-    pnl_history: list[DataPoint]
-    avg_brier_score: float
-
-
-class Stats(BaseModel):
-    topFinalCumulativePnl: float
-    avgPnl: float
-    totalTrades: int
-    totalProfit: int
-
-
-# Real data loading functions
-@lru_cache(maxsize=1)
-def load_investment_choices_from_google() -> list[ModelInvestmentDecisions]:
-    # Has bucket access, load directly from GCP bucket
-
-    model_results = []
-    bucket = get_bucket()
-    blobs = bucket.list_blobs(prefix="")
-
-    for blob in blobs:
-        if (
-            blob.name.endswith(".json")
-            and "/" in blob.name
-            and "events.json" not in blob.name
-        ):
-            parts = blob.name.split("/")
-            if "events_cache" in blob.name:
-                continue
-            if (
-                len(parts) == 3 and parts[-1] == "model_investment_decisions.json"
-            ):  # NOTE: date/model/model_event_decisions.json format
-                try:
-                    json_content = blob.download_as_text()
-                    model_result = ModelInvestmentDecisions.model_validate_json(
-                        json_content
-                    )
-                    model_results.append(model_result)
-                except Exception as e:
-                    print(f"Error reading {blob.name}: {e}")
-                    continue
-
-    # Sort by target_date
-    model_results.sort(key=lambda x: x.target_date)
-    return model_results
-
-
-@lru_cache(maxsize=1)
-def load_agent_choices():
-    """Load agent choices from GCP instead of HuggingFace dataset"""
-    return load_investment_choices_from_google()
-
-
-@lru_cache(maxsize=32)
-def get_events_by_ids(event_ids: tuple[str, ...]) -> list[Event]:
-    """Cached wrapper for EventsRequestParameters.get_events()"""
-    events = []
-    for event_id in event_ids:
-        events_request_parameters = EventsRequestParameters(
-            id=event_id,
-            limit=1,
-        )
-        events.append(events_request_parameters.get_events()[0])
-    return events
-
-
-@lru_cache(maxsize=1)
-def extract_decisions_data():
-    """Extract decisions data with odds and confidence from model results"""
-    model_results = load_agent_choices()
-
-    decisions = []
-
-    # Working with Pydantic models from GCP
-    for model_result in model_results:
-        model_name = model_result.model_info.model_pretty_name
-        date = model_result.target_date
-
-        for event_decision in model_result.event_investment_decisions:
-            for market_decision in event_decision.market_investment_decisions:
-                decisions.append(
-                    {
-                        "date": date,
-                        "market_id": market_decision.market_id,
-                        "model_name": model_name,
-                        "model_id": model_result.model_id,
-                        "odds": market_decision.model_decision.odds,
-                        "confidence": market_decision.model_decision.confidence,
-                    }
-                )
-
-    return pd.DataFrame.from_records(decisions)
-
-
-@profile_time
-def get_pnl_wrapper(
-    positions_df: pd.DataFrame,
-    write_plots: bool = False,
-    end_date: datetime | None = None,
-) -> dict[str, PnlCalculator]:
-    return get_pnls(positions_df, end_date, write_plots)
-
-
-@profile_time
-@lru_cache(maxsize=1)
-def calculate_real_performance():
-    """Calculate real Profit and performance metrics exactly like gradio app"""
-    model_results = load_agent_choices()
-
-    # Working with Pydantic models from GCP
-    print(f"Loaded {len(model_results)} model results from GCP")
-
-    positions = []
-    for model_result in model_results:
-        model_name = model_result.model_info.model_pretty_name
-        date = model_result.target_date
-
-        for event_decision in model_result.event_investment_decisions:
-            for market_decision in event_decision.market_investment_decisions:
-                positions.append(
-                    {
-                        "date": date,
-                        "market_id": market_decision.market_id,
-                        "choice": market_decision.model_decision.bet,
-                        "model_name": model_name,
-                    }
-                )
-
-    positions_df = pd.DataFrame.from_records(positions)
-    print(f"Created {len(positions_df)} position records")
-
-    # positions_df = positions_df.pivot(index="date", columns="market_id", values="bet")
-
-    pnl_calculators = get_pnl_wrapper(
-        positions_df, write_plots=False, end_date=datetime.today()
-    )
-
-    # Create BrierScoreCalculator instances for each agent
-    decisions_df = extract_decisions_data()
-    brier_calculators = {}
-    for model_name, pnl_calculator in pnl_calculators.items():
-        # Filter decisions for this agent
-        agent_decisions = decisions_df[decisions_df["model_name"] == model_name]
-        # Convert to pivot format
-        decisions_pivot_df = agent_decisions.pivot(
-            index="date", columns="market_id", values="odds"
-        )
-        # Align with PnL calculator's price data
-        decisions_pivot_df = decisions_pivot_df.reindex(
-            pnl_calculator.prices.index, method="ffill"
-        )
-        brier_calculators[model_name] = BrierScoreCalculator(
-            decisions_pivot_df, pnl_calculator.prices
-        )
-
-    agents_performance = {}
-    for model_name, pnl_calculator in pnl_calculators.items():
-        brier_calculator = brier_calculators[model_name]
-        daily_pnl = pnl_calculator.portfolio_daily_pnl
-
-        # Generate performance history from cumulative Profit
-        cumulative_pnl = pnl_calculator.portfolio_cumulative_pnl
-        pnl_history = []
-        for date_idx, pnl_value in cumulative_pnl.items():
-            pnl_history.append(
-                DataPoint(date=date_idx.strftime("%Y-%m-%d"), value=float(pnl_value))
-            )
-
-        # Calculate metrics exactly like gradio
-        final_pnl = float(pnl_calculator.portfolio_cumulative_pnl.iloc[-1])
-        sharpe_ratio = (
-            float((daily_pnl.mean() / daily_pnl.std()) * np.sqrt(252))
-            if daily_pnl.std() > 0
-            else 0
-        )
-
-        agents_performance[model_name] = {
-            "model_name": model_name,
-            "final_cumulative_pnl": final_pnl,
-            "annualized_sharpe_ratio": sharpe_ratio,
-            "pnl_history": pnl_history,
-            "daily_cumulative_pnl": pnl_calculator.portfolio_cumulative_pnl.tolist(),
-            "dates": [
-                d.strftime("%Y-%m-%d")
-                for d in pnl_calculator.portfolio_cumulative_pnl.index.tolist()
-            ],
-            "avg_brier_score": brier_calculator.avg_brier_score,
-        }
-
-        print(
-            f"Agent {model_name}: Profit={final_pnl:.3f}, Sharpe={sharpe_ratio:.3f}, Brier={brier_calculator.avg_brier_score:.3f}"
-        )
-
-    print(f"Calculated performance for {len(agents_performance)} agents")
-    return agents_performance
-
-
-# Generate leaderboard from real data only
-@lru_cache(maxsize=1)
-def get_leaderboard() -> list[LeaderboardEntry]:
-    real_performance = calculate_real_performance()
-
-    leaderboard = []
-    for _, (model_name, metrics) in enumerate(
-        sorted(
-            real_performance.items(),
-            key=lambda x: x[1]["final_cumulative_pnl"],
-            reverse=True,
-        )
-    ):
-        # Determine trend
-        history = metrics["pnl_history"]
-        if len(history) >= 2:
-            recent_change = history[-1].value - history[-2].value
-            trend = (
-                "up"
-                if recent_change > 0.1
-                else "down"
-                if recent_change < -0.1
-                else "stable"
-            )
-        else:
-            trend = "stable"
-
-        entry = LeaderboardEntry(
-            id=model_name,
-            model=model_name,
-            final_cumulative_pnl=metrics["final_cumulative_pnl"],
-            trades=0,
-            profit=0,
-            lastUpdated=datetime.now().strftime("%Y-%m-%d"),
-            trend=trend,
-            pnl_history=metrics["pnl_history"],
-            avg_brier_score=metrics["avg_brier_score"],
-        )
-        leaderboard.append(entry)
-
-    return leaderboard
-
-
-@lru_cache(maxsize=1)
-def get_events_that_received_predictions() -> list[Event]:
-    """Get events based that models ran predictions on"""
-    # Load agent choices to see what markets they've been betting on
-    data = load_agent_choices()
-
-    # Working with Pydantic models from GCP
-    event_ids = set()
-    for model_result in data:
-        for event_decision in model_result.event_investment_decisions:
-            event_ids.add(event_decision.event_id)
-    event_ids = tuple(event_ids)
-
-    return get_events_by_ids(event_ids)
-
 
 # API Endpoints
 @app.get("/")
-@profile_time
 def root():
     return {"message": "Polymarket LLM Benchmark API", "version": "1.0.0"}
 
 
 @app.get("/api/leaderboard", response_model=list[LeaderboardEntry])
-@profile_time
 def get_leaderboard_endpoint():
     """Get the current leaderboard with LLM performance data"""
     return get_leaderboard()
 
 
 @app.get("/api/events", response_model=list[Event])
-@profile_time
 def get_events_endpoint(
     search: str = "",
     sort_by: str = "volume",
@@ -411,7 +91,6 @@ def get_events_endpoint(
 
 
 @app.get("/api/stats", response_model=Stats)
-@profile_time
 def get_stats():
     """Get overall benchmark statistics"""
     leaderboard = get_leaderboard()
@@ -426,7 +105,6 @@ def get_stats():
 
 
 @app.get("/api/model/{model_id}", response_model=LeaderboardEntry)
-@profile_time
 @lru_cache(maxsize=16)
 def get_model_details(model_id: str):
     """Get detailed information for a specific model"""
@@ -439,43 +117,8 @@ def get_model_details(model_id: str):
     return model
 
 
-@lru_cache(maxsize=1)
-def get_positions_df():
-    # Calculate market-level data
-    data = load_agent_choices()
-
-    # Working with Pydantic models from GCP
-    positions = []
-    for model_result in data:
-        model_name = model_result.model_info.model_pretty_name
-        date = model_result.target_date
-
-        for event_decision in model_result.event_investment_decisions:
-            for market_decision in event_decision.market_investment_decisions:
-                positions.append(
-                    {
-                        "date": date,
-                        "market_id": market_decision.market_id,
-                        "choice": market_decision.model_decision.bet,
-                        "model_name": model_name,
-                    }
-                )
-
-    return pd.DataFrame.from_records(positions)
-
-
-@lru_cache(maxsize=1)
-def get_all_markets_pnls():
-    positions_df = get_positions_df()
-    pnl_calculators = get_pnl_wrapper(
-        positions_df, write_plots=False, end_date=datetime.today()
-    )
-    return pnl_calculators
-
-
 @lru_cache(maxsize=16)
 @app.get("/api/model/{agent_id}/pnl")
-@profile_time
 def get_model_investment_details(agent_id: str):
     """Get market-level position and PnL data for a specific model"""
 
@@ -560,7 +203,6 @@ def get_model_investment_details(agent_id: str):
 
 
 @app.get("/api/event/{event_id}")
-@profile_time
 def get_event_details(event_id: str):
     """Get detailed information for a specific event including all its markets"""
     events_list = get_events_by_ids((event_id,))
@@ -572,7 +214,6 @@ def get_event_details(event_id: str):
 
 
 @app.get("/api/event/{event_id}/market_prices")
-@profile_time
 @lru_cache(maxsize=32)
 def get_event_market_prices(event_id: str):
     """Get price history for all markets in an event"""
@@ -600,7 +241,6 @@ def get_event_market_prices(event_id: str):
     "/api/event/{event_id}/investment_decisions",
     response_model=list[dict],
 )
-@profile_time
 def get_event_investment_decisions(event_id: str):
     """Get real investment choices for a specific event"""
     # Load agent choices data like in gradio app
