@@ -93,9 +93,9 @@ export function LeaderboardTable({
           <table className="w-full table-fixed">
             <thead className="bg-muted/30">
               <tr>
-                <th className="text-center py-4 px-3 font-semibold w-12">Rank</th>
+                <th className="text-center py-4 px-3 font-semibold w-12"></th>
                 <th className="text-left py-4 px-4 font-semibold w-24">Model Name</th>
-                <th className="text-left py-4 px-4 font-semibold w-12"></th>
+                <th className="hidden md:table-cell text-left py-4 px-4 font-semibold w-12"></th>
                 <th className="text-center py-4 px-4 font-semibold w-24">
                   <div className="flex items-center justify-center space-x-1 w-full">
                     <button
@@ -133,7 +133,7 @@ export function LeaderboardTable({
                     <td className="py-4 px-4">
                       <div className="h-4 bg-gray-200 rounded animate-pulse w-32"></div>
                     </td>
-                    <td className="py-4 px-4">
+                    <td className="hidden md:table-cell py-4 px-4">
                       <div className="h-4 bg-gray-200 rounded animate-pulse w-24"></div>
                     </td>
                     <td className="py-4 px-4 text-center">
@@ -163,7 +163,7 @@ export function LeaderboardTable({
                         {model.model}
                       </a>
                     </td>
-                    <td className="py-4 px-4">
+                    <td className="hidden md:table-cell py-4 px-4">
                       <CompanyDisplay modelName={model.model} />
                     </td>
                     <td className="py-4 px-4 text-center font-medium">

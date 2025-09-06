@@ -200,7 +200,7 @@ export function EventDetail({ event }: EventDetailProps) {
 
             <div className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gray-50 text-gray-900 border border-gray-200">
               <span className="font-medium">Ends:</span>
-              <span className="ml-1">{event.end_datetime ? new Date(event.end_datetime).toLocaleDateString() : 'N/A'}</span>
+              <span className="ml-1">{event.end_datetime ? new Date(event.end_datetime).toLocaleDateString('en-US') : 'N/A'}</span>
             </div>
           </div>
         </div>
@@ -263,7 +263,7 @@ export function EventDetail({ event }: EventDetailProps) {
         {/* Latest Model Predictions */}
         <div className="mt-8">
           <h2 className="text-2xl font-bold mb-6">
-            Latest Predictions{latestDecisionDate ? ` (${new Date(latestDecisionDate).toLocaleDateString(undefined, { day: 'numeric', month: 'long', year: 'numeric' })})` : ''}
+            Latest Predictions{latestDecisionDate ? ` (${new Date(latestDecisionDate).toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })})` : ''}
           </h2>
 
           {loading ? (

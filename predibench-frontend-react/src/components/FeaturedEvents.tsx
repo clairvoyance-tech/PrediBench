@@ -43,7 +43,12 @@ export function FeaturedEvents({
       
       const matchesTag = selectedTag === '' || (event.tags && event.tags.includes(selectedTag))
 
-      return matchesSearch && matchesStatus && matchesTag
+      // Only show events with markets that have multiple datapoints in their timeseries
+      const hasMultipleDatapoints = event.markets?.some(market => 
+        market.prices && market.prices.length > 1
+      ) ?? false
+
+      return matchesSearch && matchesStatus && matchesTag && hasMultipleDatapoints
     })
     .sort((a, b) => {
       let comparison = 0

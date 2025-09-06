@@ -285,7 +285,7 @@ export function ModelsPage({ leaderboard }: ModelsPageProps) {
     <div className="container mx-auto px-4 py-8">
       {/* Header with title and model selection */}
       <div className="flex items-center justify-between mb-8">
-        <h1 className="text-3xl font-bold">Inspect model performance</h1>
+        <h1 className="text-2xl font-bold">Model performance</h1>
 
         <Select.Root value={selectedModel} onValueChange={handleModelSelect}>
           <Select.Trigger className="inline-flex items-center justify-between gap-2 rounded-lg border border-border bg-background px-4 py-2 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 min-w-[300px]">
@@ -340,7 +340,7 @@ export function ModelsPage({ leaderboard }: ModelsPageProps) {
       {/* Model Card Display */}
       {selectedModelData && (
         <div className="space-y-8">
-          <div className="p-6 bg-card rounded-xl border border-border">
+          <div className="md:p-6 md:bg-card md:rounded-xl md:border md:border-border">
             {/* Model Info - Always visible */}
             <div className="mb-8 border-b border-border pb-6">
               <h2 className="text-xl font-semibold mb-4">{selectedModelData.model}</h2>

@@ -71,7 +71,7 @@ export function EventCard({ event }: EventCardProps) {
                 <Clock className="h-4 w-4 mr-1" />
                 <span className="text-xs">
                   {event.end_datetime
-                    ? `Closes ${new Date(event.end_datetime).toLocaleDateString()}`
+                    ? `Closes ${new Date(event.end_datetime).toLocaleDateString('en-US')}`
                     : 'No end date'
                   }
                 </span>

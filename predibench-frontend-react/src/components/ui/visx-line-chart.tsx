@@ -710,4 +710,10 @@ const ChartWrapper = styled.div`
       width: 100%;
     }
   }
+
+  /* Responsive margins for mobile */
+  @media (max-width: 768px) {
+    margin-left: -1rem;
+    margin-right: -1rem;
+  }
 `
