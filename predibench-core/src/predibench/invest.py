@@ -101,18 +101,29 @@ if __name__ == "__main__":
     # Test with random model to verify new output format
     models = [
         ModelInfo(
-            model_id="Qwen/Qwen3-Coder-480B-A35B-Instruct",
-            model_pretty_name="Qwen3 Coder 480B",
-            inference_provider="fireworks-ai",
-            company_pretty_name="Qwen",
-            open_weights=True,
+            model_id="test_random",
+            model_pretty_name="Random Baseline",
+            inference_provider="baseline",
+            company_pretty_name="Baseline",
+        ),
+        ModelInfo(
+            model_id="most_likely_outcome",
+            model_pretty_name="Most Likely Outcome",
+            inference_provider="baseline",
+            company_pretty_name="Baseline",
+        ),
+        ModelInfo(
+            model_id="most_likely_volume_proportional",
+            model_pretty_name="Volume Proportional",
+            inference_provider="baseline",
+            company_pretty_name="Baseline",
         ),
     ]
 
     results = run_investments_for_specific_date(
         models=models,
         time_until_ending=timedelta(days=7 * 6),
-        target_date=date.today(),
+        target_date=date(2025, 9, 10),
         max_n_events=2,
         force_rewrite=True,
     )
