@@ -1,5 +1,5 @@
 import { scaleLinear, scaleTime } from '@visx/scale'
-import { AnimatedLineSeries, Axis, XYChart } from '@visx/xychart'
+import { Axis, XYChart } from '@visx/xychart'
 import { extent } from 'd3-array'
 import { format } from 'date-fns'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
@@ -8,6 +8,63 @@ import type { ModelInvestmentDecision } from '../../api'
 import { MarkerAnnotations } from './MarkerAnnotations'
 
 const tickLabelOffset = 2
+
+function SegmentedLineWithDots({
+  data,
+  xScale,
+  yScale,
+  xAccessor,
+  yAccessor,
+  stroke,
+  clipPath,
+  dotRadius = 3
+}: {
+  data: DataPoint[]
+  xScale: (value: Date) => number
+  yScale: (value: number) => number
+  xAccessor: (d: DataPoint) => Date
+  yAccessor: (d: DataPoint) => number
+  stroke: string
+  clipPath?: string
+  dotRadius?: number
+}) {
+  // Build path commands for contiguous segments only
+  const pathD: string[] = []
+  let segmentOpen = false
+
+  // Precompute points
+  const points = data.map(d => ({
+    x: xScale(xAccessor(d)),
+    y: yScale(yAccessor(d)),
+    raw: d
+  }))
+
+  for (let i = 0; i < points.length; i++) {
+    const p = points[i]
+    const isValid = Number.isFinite(p.x) && Number.isFinite(p.y)
+    if (!isValid) {
+      segmentOpen = false
+      continue
+    }
+    if (!segmentOpen) {
+      pathD.push(`M ${p.x} ${p.y}`)
+      segmentOpen = true
+    } else {
+      pathD.push(`L ${p.x} ${p.y}`)
+    }
+  }
+
+  return (
+    <g clipPath={clipPath} style={{ pointerEvents: 'none' }}>
+      <path d={pathD.join(' ')} stroke={stroke} fill="none" />
+      {points.map((p, idx) => (
+        Number.isFinite(p.x) && Number.isFinite(p.y) ? (
+          <circle key={`pt-${idx}`} cx={p.x} cy={p.y} r={dotRadius} fill={stroke} />
+        ) : null
+      ))}
+    </g>
+  )
+}
 
 interface DataPoint {
   x?: string | Date | null
@@ -190,6 +247,7 @@ export function VisxLineChart({
 
   // Create scales for proper coordinate conversion
   const scales = useMemo(() => {
+    console.log('[VisxLineChart] computing scales', { seriesCount: series.length })
     const allData = series.flatMap(s => s.data).filter(d => d != null)
     if (allData.length === 0) return null
 
@@ -303,6 +361,8 @@ export function VisxLineChart({
       range: [chartHeight - margin.bottom, margin.top]
     })
 
+    const debugTicks = (yTicks || []).slice(0, 10)
+    console.log('[VisxLineChart] yDomain/ticks', { yExtent, actualTickCount, debugTicks })
     return { xScale, yScale, yDomain: yExtent, actualTickCount, yTicks, yStep }
   }, [series, safeXAccessor, safeYAccessor, yDomain, margin, chartHeight, containerWidth, effectiveNumTicks])
 
@@ -321,7 +381,7 @@ export function VisxLineChart({
         const endX = period.endDate ? scales.xScale(period.endDate) : containerWidth - margin.right
         const middleX = (startX + endX) / 2
 
-        setHoverState({
+        const newState = {
           xPosition: middleX,
           tooltips: [],
           customAnnotation: {
@@ -330,7 +390,9 @@ export function VisxLineChart({
             nextDate: period.endDate
           },
           clipEndPosition: endX
-        })
+        }
+        console.log('[VisxLineChart] setHoverState annotation', newState)
+        setHoverState(newState)
         return
       }
 
@@ -408,48 +470,23 @@ export function VisxLineChart({
     // Use the x position from the first tooltip for the vertical line
     const alignedXPosition = filteredTooltips.length > 0 ? filteredTooltips[0].x : targetX
 
-    setHoverState({
+    const newHover = {
       xPosition: alignedXPosition,
       tooltips: filteredTooltips
-    })
+    }
+    console.log('[VisxLineChart] setHoverState standard', newHover)
+    setHoverState(newHover)
   }, [series, safeXAccessor, safeYAccessor, scales, containerRef, additionalAnnotations, findAnnotationPeriod, containerWidth, margin])
 
-  // Compute marker points: one circle per x-point, except the very first
-  // point of each continuous segment. If clipTime is provided, only include
-  // points with x <= clipTime so markers align with hover clipping.
-  const getMarkerPoints = useCallback(
-    (data: DataPoint[], clipTime?: Date) => {
-      const points: DataPoint[] = []
-      let inSegment = false
-      for (const p of data) {
-        const xd = safeXAccessor(p)
-        const yd = safeYAccessor(p)
-        const valid = xd instanceof Date && !isNaN(xd.getTime()) && Number.isFinite(yd)
-        if (!valid) {
-          inSegment = false
-          continue
-        }
-        // entering a new segment: skip the first point
-        if (!inSegment) {
-          inSegment = true
-          continue
-        }
-        if (clipTime) {
-          if (xd.getTime() <= clipTime.getTime()) points.push(p)
-        } else {
-          points.push(p)
-        }
-      }
-      return points
-    },
-    [safeXAccessor, safeYAccessor]
-  )
+  // No separate marker computation. Circles are drawn in the same clipped groups
+  // as their corresponding line segments to guarantee visual consistency.
 
   const handlePointerMove = useCallback((params: { event?: React.PointerEvent<Element> | React.FocusEvent<Element, Element>; svgPoint?: { x: number; y: number } }) => {
     if (!params.event || !containerRef.current || !scales) return
 
     const containerRect = containerRef.current.getBoundingClientRect()
     const mouseX = (params.event as React.PointerEvent<Element>).clientX - containerRect.left
+    console.log('[VisxLineChart] pointerMove', { mouseX })
     const now = Date.now()
 
     // Add to queue
@@ -524,6 +561,7 @@ export function VisxLineChart({
         setHoverState(null)
       }}
     >
+      {(() => { console.log('[VisxLineChart] render XYChart', { width: containerWidth, height: chartHeight, hoverStateExists: !!hoverState }); return null })()}
       <XYChart
         width={containerWidth}
         height={chartHeight}
@@ -549,12 +587,14 @@ export function VisxLineChart({
           {hoverState && series.map((_, index) => {
             // Use clipEndPosition if available (for annotation periods), otherwise use xPosition
             const clipX = hoverState.clipEndPosition ?? hoverState.xPosition
+            const w = Math.max(0, clipX - margin.left)
+            console.log('[VisxLineChart] hover clip rect', { index, clipX, width: w })
             return (
               <clipPath key={index} id={`hover-clip-${index}`}>
                 <rect
                   x={margin.left}
                   y={0}
-                  width={Math.max(0, clipX - margin.left)}
+                  width={w}
                   height={chartHeight}
                 />
               </clipPath>
@@ -621,34 +661,7 @@ export function VisxLineChart({
           </g>
         )}
 
-        <Axis
-          hideAxisLine
-          hideTicks
-          orientation="bottom"
-          tickFormat={(d: any) => {
-            try {
-              const dt = d instanceof Date ? d : new Date(d)
-              return format(dt, 'EEE dd')
-            } catch {
-              return ''
-            }
-          }}
-          tickLabelProps={() => ({ dy: tickLabelOffset })}
-          numTicks={effectiveNumTicks}
-        />
-        <Axis
-          hideAxisLine={false}
-          hideTicks
-          orientation="left"
-          numTicks={scales.actualTickCount}
-          tickValues={scales.yTicks}
-          tickFormat={(val: any) => {
-            const v = typeof val === 'number' ? val : Number(val)
-            if (!Number.isFinite(v)) return ''
-            return `${Math.round(v * 100)}%`
-          }}
-          tickLabelProps={() => ({ dx: -10 })}
-        />
+        {/* Axes will be drawn after series to ensure visibility */}
 
         {/* Month separators and labels (below day ticks) */}
         {(() => {
@@ -732,81 +745,59 @@ export function VisxLineChart({
 
         {series.map((line, index) => (
           <g key={line.dataKey}>
-            {/* Gray background line - shows full line */}
-            <AnimatedLineSeries
-              stroke="hsl(var(--muted-foreground))"
-              dataKey={`${line.dataKey}-gray`}
+            {/* Gray background line with dots (full series, clipped to plot area reveal) */}
+            <SegmentedLineWithDots
               data={line.data}
+              xScale={scales.xScale}
+              yScale={scales.yScale}
               xAccessor={safeXAccessor}
               yAccessor={safeYAccessor}
-              style={{
-                // Clip to chart plot area so nothing shows outside Y limits
-                clipPath: 'url(#reveal-clip)'
-              }}
+              stroke={"hsl(var(--muted-foreground))"}
+              clipPath={'url(#reveal-clip)'}
             />
 
-            {/* Colored line clipped to hover position */}
-            <AnimatedLineSeries
+            {/* Colored line with dots, clipped to hover/annotation if present */}
+            <SegmentedLineWithDots
+              data={line.data}
+              xScale={scales.xScale}
+              yScale={scales.yScale}
+              xAccessor={safeXAccessor}
+              yAccessor={safeYAccessor}
               stroke={line.stroke}
-              dataKey={`${line.dataKey}-colored`}
-              data={line.data}
-              xAccessor={safeXAccessor}
-              yAccessor={safeYAccessor}
-              style={{
-                clipPath: hoverState ? `url(#hover-clip-${index})` : undefined
-              }}
+              clipPath={hoverState ? `url(#hover-clip-${index})` : 'url(#reveal-clip)'}
             />
-
-            {/* Markers for gray background line: one per x-point except segment starts (clip to reveal) */}
-            {(() => {
-              const markerPoints = getMarkerPoints(line.data)
-              return (
-                <g clipPath={'url(#reveal-clip)'}>
-                  {markerPoints.map((pt, i) => {
-                    const cx = scales.xScale(safeXAccessor(pt))
-                    const cy = scales.yScale(safeYAccessor(pt))
-                    if (!Number.isFinite(cx) || !Number.isFinite(cy)) return null
-                    return (
-                      <circle
-                        key={`${line.dataKey}-gray-marker-${i}`}
-                        cx={cx}
-                        cy={cy}
-                        r={3}
-                        fill={'hsl(var(--muted-foreground))'}
-                        pointerEvents="none"
-                      />
-                    )
-                  })}
-                </g>
-              )
-            })()}
-
-            {/* Markers for colored series only: one per x-point except segment starts */}
-            {(() => {
-              const clipTime = hoverState ? scales.xScale.invert(hoverState.xPosition) : undefined
-              const markerPoints = getMarkerPoints(line.data, clipTime)
-              return (
-                <g clipPath={hoverState ? `url(#hover-clip-${index})` : 'url(#reveal-clip)'}>
-                  {markerPoints.map((pt, i) => {
-                    const cx = scales.xScale(safeXAccessor(pt))
-                    const cy = scales.yScale(safeYAccessor(pt))
-                    if (!Number.isFinite(cx) || !Number.isFinite(cy)) return null
-                    return (
-                      <circle
-                        key={`${line.dataKey}-marker-${i}`}
-                        cx={cx}
-                        cy={cy}
-                        r={3}
-                        fill={line.stroke}
-                        pointerEvents="none"
-                      />
-                    )
-                  })}
-                </g>
-              )
-            })()}
           </g>
         ))}
+
+        {/* Axes drawn last to stay on top */}
+        <Axis
+          hideAxisLine
+          hideTicks
+          orientation="bottom"
+          tickFormat={(d: any) => {
+            try {
+              const dt = d instanceof Date ? d : new Date(d)
+              return format(dt, 'EEE dd')
+            } catch {
+              return ''
+            }
+          }}
+          tickLabelProps={() => ({ dy: tickLabelOffset })}
+          numTicks={effectiveNumTicks}
+        />
+        <Axis
+          hideAxisLine={false}
+          hideTicks
+          orientation="left"
+          numTicks={scales.actualTickCount}
+          tickValues={scales.yTicks}
+          tickFormat={(val: any) => {
+            const v = typeof val === 'number' ? val : Number(val)
+            if (!Number.isFinite(v)) return ''
+            return `${Math.round(v * 100)}%`
+          }}
+          tickLabelProps={() => ({ dx: -10 })}
+        />
 
         {/* Decision point markers with hover annotations */}
         {showDecisionMarkers && modelDecisions.length > 0 && (
