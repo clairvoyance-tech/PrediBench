@@ -141,6 +141,26 @@ MODELS_BY_PROVIDER = {
             company_pretty_name="Anthropic",
         ),
     ],
+    "baseline": [
+        ModelInfo(
+            model_id="test_random",
+            model_pretty_name="Random Baseline",
+            inference_provider="baseline",
+            company_pretty_name="Baseline",
+        ),
+        ModelInfo(
+            model_id="most_likely_outcome",
+            model_pretty_name="Most Likely Outcome",
+            inference_provider="baseline",
+            company_pretty_name="Baseline",
+        ),
+        ModelInfo(
+            model_id="most_likely_volume_proportional",
+            model_pretty_name="Volume Proportional",
+            inference_provider="baseline",
+            company_pretty_name="Baseline",
+        ),
+    ],
 }
 
 MODEL_MAP = [model for models in MODELS_BY_PROVIDER.values() for model in models]
