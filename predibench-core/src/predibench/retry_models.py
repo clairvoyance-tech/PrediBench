@@ -40,6 +40,19 @@ def is_rate_limit_error(exception):
         or "rate_limit" in error_str
     )
 
+def remove_content_after_stop_sequences(content: str, stop_sequences: list[str]) -> str:
+    """Remove content after any stop sequence is encountered."""
+    if not content or not stop_sequences:
+        return content
+    for stop_seq in stop_sequences:
+        split = content.split(stop_seq)
+        if len(split) == 0 or len(split) == 1 or len(split) == 2:
+            continue
+        else:
+            # more than 2 stop sequences, the model did not stop properly so we truncate the content
+            content = stop_seq.join(split[:2])
+    return content
+
 
 def add_retry_logic(base_class: Type[T], wait_time: float = 0) -> Type[T]:
     """Factory function to add retry logic to any ApiModel class."""
@@ -62,13 +75,15 @@ def add_retry_logic(base_class: Type[T], wait_time: float = 0) -> Type[T]:
             **kwargs,
         ) -> ChatMessage:
             time.sleep(wait_time)
-            return super().generate(
+            result = super().generate(
                 messages=messages,
                 stop_sequences=stop_sequences,
                 response_format=response_format,
                 tools_to_call_from=tools_to_call_from,
                 **kwargs,
             )
+            result.content = remove_content_after_stop_sequences(content=result.content, stop_sequences=stop_sequences)
+            return result
 
         @retry(
             stop=stop_after_attempt(5),
@@ -87,13 +102,15 @@ def add_retry_logic(base_class: Type[T], wait_time: float = 0) -> Type[T]:
             **kwargs,
         ) -> Generator[ChatMessageStreamDelta, None, None]:
             time.sleep(wait_time)
-            return super().generate_stream(
+            result = super().generate(
                 messages=messages,
                 stop_sequences=stop_sequences,
                 response_format=response_format,
                 tools_to_call_from=tools_to_call_from,
                 **kwargs,
             )
+            result.content = remove_content_after_stop_sequences(content=result.content, stop_sequences=stop_sequences)
+            return result
 
     ModelWithRetry.__name__ = f"{base_class.__name__}WithRetry"
     ModelWithRetry.__doc__ = (
