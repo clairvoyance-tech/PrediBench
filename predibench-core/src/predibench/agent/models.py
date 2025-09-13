@@ -11,28 +11,29 @@ from smolagents import Timing, TokenUsage
 
 
 class SingleModelDecision(BaseModel):
-    rationale: str
+    rationale: str = Field(..., description="Explanation for your decision and why you think this market is mispriced (or correctly priced if skipping). Write at least a few sentences. If you take a strong bet, make sure to highlight the facts you know/value that the market doesn't.")
     odds: float = Field(
         ...,
         ge=0.0,
         le=1.0,
-        description="Model's assessment of probability (0.0 to 1.0)",
+        description="The odds you think the market will settle at (your true probability estimate)",
     )
     bet: float = Field(
         ...,
         ge=-1.0,
         le=1.0,
-        description="Model's bet on this market (-1.0 to 1.0, sums of absolute values must be 1 with bets on other markets from this event)",
+        description="The amount in dollars that you bet on this market (can be negative if you want to buy the opposite of the market)",
     )
     confidence: int = Field(
-        ..., ge=0, le=10, description="Model's confidence in its decision (1 to 10)"
+        ..., ge=0, le=10, description="Your confidence in the odds and your bet. Should be between 0 (absolute uncertainty, you shouldn't bet if you're not confident) and 10 (absolute certainty, then you can bet high)."
     )
+    
+class MarketInvestmentDecisionRaw(BaseModel):
+    market_id: str = Field(..., description="The market ID")
+    model_decision: SingleModelDecision = Field(..., description="Model's decision for this market")
 
-
-class MarketInvestmentDecision(BaseModel):
-    market_id: str
-    model_decision: SingleModelDecision
-    market_question: str | None = None
+class MarketInvestmentDecision(MarketInvestmentDecisionRaw):
+    market_question: str | None = None 
 
 
 class EventInvestmentDecisions(BaseModel):
@@ -76,6 +77,7 @@ class ModelInfo(BaseModel):
     open_weights: bool = False
     client: Any | None = None
     agent_type: Literal["code", "toolcalling", "deepresearch"] = "code"
+    sdk: Literal["smolagents", "openai"] = "smolagents"
     
     @staticmethod
     def static_get_model_result_path(model_id: str, target_date: date) -> Path:

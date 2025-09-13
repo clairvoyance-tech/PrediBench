@@ -37,6 +37,7 @@ from tenacity import (
     after_log,
 )
 from markdownify import markdownify as md
+from predibench.agent.tools_common import web_search_common, visit_webpage_scrapfly
 
 logger = get_logger(__name__)
 
@@ -104,107 +105,10 @@ class GoogleSearchTool(Tool):
         reraise=True,
     )
     def forward(self, query: str) -> str:
-        if self.provider == "serpapi":
-            params = {
-                "q": query,
-                "api_key": self.api_key,
-                "engine": "google",
-                "google_domain": "google.com",
-            }
-            if self.cutoff_date is not None:
-                params["tbs"] = f"cdr:1,cd_max:{self.cutoff_date.strftime('%m/%d/%Y')}"
-
-            response = requests.get("https://serpapi.com/search.json", params=params)
-
-        elif self.provider == "bright_data":
-            # Define search parameters as dictionary for proper URL encoding
-            search_params = {
-                "q": query,
-                "gl": "US",
-                "hl": "en",
-                "brd_json": "1"
-            }
-            
-            # Encode parameters properly
-            encoded_params = urllib.parse.urlencode(search_params)
-            search_url = f"https://google.com/search?{encoded_params}"
-            
-            headers = {
-                "Authorization": f"Bearer {self.api_key}",
-                "Content-Type": "application/json"
-            }
-            payload = {
-                "method": "GET",
-                "zone": "serp_api1",
-                "url": search_url,
-                "format": "json",
-            }
-            
-            response = requests.post(
-                "https://api.brightdata.com/request",
-                json=payload,
-                headers=headers
-            )
-        elif self.provider == "serper":
-            payload = {
-                "q": query,
-            }
-            if self.cutoff_date is not None:
-                payload["tbs"] = f"cdr:1,cd_max:{self.cutoff_date.strftime('%m/%d/%Y')}"
-
-            headers = {"X-API-KEY": self.api_key, "Content-Type": "application/json"}
-            response = requests.post(
-                "https://google.serper.dev/search", json=payload, headers=headers
-            )
-
-        if response.status_code == 200:
-            if self.provider == "bright_data":
-                raw_result = response.json()
-                results = json.loads(raw_result["body"])
-            else:
-                results = response.json()
-        else:
-            logger.error(f"Error response: {response.status_code}")
-            logger.error(f"Response text: {response.text}")
-            raise ValueError(response.json())
-
-        if self.organic_key not in results.keys():
-            raise Exception(
-                f"No results found for query: '{query}'. Use a less restrictive query."
-            )
-        if len(results[self.organic_key]) == 0:
-            return f"No results found for '{query}'. Try with a more general query."
-
-        web_snippets = []
-        if self.organic_key in results:
-            for idx, page in enumerate(results[self.organic_key]):
-                date_published = ""
-                # Handle different date formats for different providers
-                if self.provider == "bright_data" and "extensions" in page:
-                    # Take the first extension text as date
-                    if page["extensions"] and len(page["extensions"]) > 0:
-                        first_ext = page["extensions"][0]
-                        if isinstance(first_ext, dict) and "text" in first_ext:
-                            date_published = "\nDate published: " + first_ext["text"]
-                elif "date" in page:
-                    date_published = "\nDate published: " + page["date"]
-
-                source = ""
-                if "source" in page:
-                    source = "\nSource: " + page["source"]
-
-                snippet = ""
-                # Handle different field names for different providers
-                if self.provider == "bright_data" and "description" in page:
-                    snippet = "\n" + page["description"]
-                elif "snippet" in page:
-                    snippet = "\n" + page["snippet"]
-
-                redacted_version = f"{idx}. [{page['title']}]({page['link']}){date_published}{source}\n{snippet}"
-                web_snippets.append(redacted_version)
-                self.sources.append(page["link"])
+        markdown, sources = web_search_common(query=query, provider=self.provider, cutoff_date=self.cutoff_date)
+        self.sources.extend(sources)
         self.sources = list(dict.fromkeys(self.sources))
-        return f"## Search Results for '{query}'\n" + "\n\n".join(web_snippets)
+        return markdown
 
 
 class BrightDataVisitWebpageTool(VisitWebpageToolWithSources):
@@ -324,57 +228,25 @@ class ScrapflyVisitWebPageTool(VisitWebpageToolWithSources):
 
     def __init__(self, asp: bool = True, render_js: bool = True):
         super().__init__()
-        self.api_key = os.getenv("SCRAPFLY_API_KEY")
-        if not self.api_key:
-            raise ValueError(
-                "Missing SCRAPFLY_API_KEY environment variable for Scrapfly API."
-            )
         self.asp = asp
         self.render_js = render_js
 
     def forward(self, url: str) -> str:
-        from scrapfly import ScrapflyClient, ScrapeConfig, ScrapeApiResponse
-
-        scrapfly = ScrapflyClient(key=self.api_key)
-        result: ScrapeApiResponse = scrapfly.scrape(ScrapeConfig(
-            tags=["player", "project:default"],
-            asp=self.asp,
-            render_js=self.render_js,
-            url=url
-        ))
-        
-        html_content = result.content
-        markdown_content = md(html_content, heading_style="ATX")
+        markdown_content = visit_webpage_scrapfly(url, asp=self.asp, render_js=self.render_js)
         self._add_source(url)
         return markdown_content
 
-@tool
-def final_answer(
+def parse_market_decisions_and_unallocated(
     market_decisions: list[dict], unallocated_capital: float
 ) -> tuple[list[MarketInvestmentDecision], float]:
-    """
-    Use this tool to validate and return the final event decisions for all relevant markets.
-    Provide decisions for all markets you want to bet on.
-
-    Args:
-        market_decisions (list[dict]): List of market decisions. Each dict should contain:
-            1. market_id (str): The market ID
-            2. rationale (str): Explanation for your decision and why you think this market is mispriced (or correctly priced if skipping). Write at least a few sentences. If you take a strong bet, make sure to highlight the facts you know/value that the market doesn't.
-            3. odds (float, 0 to 1): The odds you think the market will settle at (your true probability estimate)
-            4. confidence (int, 0 to 10): Your confidence in the odds and your bet. Should be between 0 (absolute uncertainty, you shouldn't bet if you're not confident) and 10 (absolute certainty, then you can bet high).
-            5. bet (float, -1 to 1): The amount in dollars that you bet on this market (can be negative if you want to buy the opposite of the market)
-        unallocated_capital (float): Fraction of capital not allocated to any bet (0.0 to 1.0)
-    """
+    """Validate and parse market decisions + unallocated capital into structured objects."""
     # Manual type checks for market_decisions
     if not isinstance(market_decisions, list):
         raise TypeError(
-            f"market_decisions must be a list, got {type(market_decisions).__name__}"
+            f"market_decisions must be a list, even an empty list got {type(market_decisions).__name__}"
         )
-
-    if not market_decisions or len(market_decisions) == 0:
-        raise ValueError(
-            "No market decisions provided - at least one market decision is required"
-        )
+    if len(market_decisions) == 0:
+        return [], 1.0
 
     for i, decision in enumerate(market_decisions):
         if not isinstance(decision, dict):
@@ -466,6 +338,26 @@ def final_answer(
     # NOTE: don't rescale in the end
 
     return validated_decisions, unallocated_capital
+
+
+@tool
+def final_answer(
+    market_decisions: list[dict], unallocated_capital: float
+) -> tuple[list[MarketInvestmentDecision], float]:
+    """
+    Use this tool to validate and return the final event decisions for all relevant markets.
+    Provide decisions for all markets you want to bet on.
+
+    Args:
+        market_decisions (list[dict]): List of market decisions. Each dict should contain:
+            1. market_id (str): The market ID
+            2. rationale (str): Explanation for your decision and why you think this market is mispriced (or correctly priced if skipping). Write at least a few sentences. If you take a strong bet, make sure to highlight the facts you know/value that the market doesn't.
+            3. odds (float, 0 to 1): The odds you think the market will settle at (your true probability estimate)
+            4. confidence (int, 0 to 10): Your confidence in the odds and your bet. Should be between 0 (absolute uncertainty, you shouldn't bet if you're not confident) and 10 (absolute certainty, then you can bet high).
+            5. bet (float, -1 to 1): The amount in dollars that you bet on this market (can be negative if you want to buy the opposite of the market)
+        unallocated_capital (float): Fraction of capital not allocated to any bet (0.0 to 1.0)
+    """
+    return parse_market_decisions_and_unallocated(market_decisions, unallocated_capital)
 
 
 class ListMarketInvestmentDecisions(BaseModel):

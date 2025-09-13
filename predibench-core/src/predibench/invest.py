@@ -110,11 +110,11 @@ if __name__ == "__main__":
     # Test with random model to verify new output format
     models = [
         ModelInfo(
-            model_id="Qwen/Qwen3-Coder-480B-A35B-Instruct",
-            model_pretty_name="Qwen3 Coder 480B",
-            inference_provider="fireworks-ai",
-            company_pretty_name="Qwen",
-            open_weights=True,
+            model_id="gpt-5-mini",
+            model_pretty_name="GPT-5 Mini",
+            inference_provider="openai",
+            company_pretty_name="OpenAI",
+            sdk="openai",
         ),
     ]
 

@@ -18,6 +18,7 @@ from predibench.agent.smolagents_utils import (
     run_perplexity_deep_research,
     run_smolagents,
 )
+from predibench.agent.openai_agent import run_openai_tools_agent
 from predibench.date_utils import is_backward_mode
 from predibench.logger_config import get_logger
 from predibench.polymarket_api import Event, Market
@@ -209,13 +210,21 @@ You are an expert prediction-market analyst. You have been given an amount of US
             event_id=event.id,
         )
     else:
-        complete_market_investment_decisions = run_smolagents(
-            model_info=model_info,
-            question=full_question,
-            cutoff_date=target_date if backward_mode else None,
-            search_provider="bright_data",
-            max_steps=20,
-        )
+        if model_info.sdk == "openai":
+            complete_market_investment_decisions = run_openai_tools_agent(
+                model_info=model_info,
+                question=full_question,
+                search_provider="bright_data",
+                max_steps=20,
+            )
+        else:
+            complete_market_investment_decisions = run_smolagents(
+                model_info=model_info,
+                question=full_question,
+                cutoff_date=target_date if backward_mode else None,
+                search_provider="bright_data",
+                max_steps=20,
+            )
     for (
         market_decision
     ) in complete_market_investment_decisions.market_investment_decisions:

@@ -53,6 +53,25 @@ def test_invest():
         assert hasattr(result[0], "target_date")
 
 
+def test_invest_openai():
+    models = [
+        ModelInfo(
+            model_id="gpt-5-mini",
+            model_pretty_name="GPT-5 Mini",
+            inference_provider="openai",
+            company_pretty_name="OpenAI",
+            sdk="openai",
+            agent_type="toolcalling",
+        ),
+    ]
+    target_date = date.today()
+    result = run_investments_for_specific_date(
+        models=models,
+        time_until_ending=timedelta(days=7 * 6),
+        max_n_events=2,
+        target_date=target_date,
+        force_rewrite=True,
+    )
 
 if __name__ == "__main__":
-    test_invest()
+    test_invest_openai()

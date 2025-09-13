@@ -16,6 +16,7 @@ MODELS_BY_PROVIDER = {
             inference_provider="openai",
             company_pretty_name="OpenAI",
             agent_type="toolcalling",
+            sdk="openai",
         ),
         ModelInfo(
             model_id="gpt-5-mini",
@@ -23,6 +24,7 @@ MODELS_BY_PROVIDER = {
             inference_provider="openai",
             company_pretty_name="OpenAI",
             agent_type="toolcalling",
+            sdk="openai",
         ),
         ModelInfo(
             model_id="gpt-4.1",
@@ -30,6 +32,7 @@ MODELS_BY_PROVIDER = {
             inference_provider="openai",
             company_pretty_name="OpenAI",
             agent_type="toolcalling",
+            sdk="openai",
         ),
     ],
     "o3-deep-research": [
