@@ -1,0 +1,63 @@
+LLM Distribution Analysis Report
+==================================================
+
+Model: Qwen3 235B
+Provider: Qwen
+Number of runs: 10
+Number of events per run: 2
+Total market decisions analyzed: 80
+Unique markets: 8
+
+MARKET-LEVEL ANALYSIS:
+==============================
+
+Predicted Probability:
+  Mean: 0.407
+  Std Dev: 0.434
+  Range: [0.000, 1.000]
+  Median: 0.100
+
+Bets:
+  Mean: -0.043
+  Std Dev: 0.342
+  Range: [-0.990, 0.600]
+  Median: 0.000
+
+Confidence:
+  Mean: 8.800
+  Std Dev: 1.308
+  Range: [4.000, 10.000]
+  Median: 9.000
+
+Market-Level Consistency Analysis:
+------------------------------
+Predicted Probability consistency: Low (CV: 1.065)
+Bets consistency: Low (CV: 7.877)
+Confidence consistency: Medium (CV: 0.149)
+
+EVENT-LEVEL ANALYSIS:
+==============================
+
+Total Allocated:
+  Mean: 0.943
+  Std Dev: 0.053
+  Range: [0.850, 1.000]
+  Median: 0.950
+
+Unallocated Capital:
+  Mean: 0.056
+  Std Dev: 0.053
+  Range: [0.000, 0.150]
+  Median: 0.050
+
+Num Markets Per Event:
+  Mean: 4.000
+  Std Dev: 0.000
+  Range: [4.000, 4.000]
+  Median: 4.000
+
+KEY INSIGHTS:
+====================
+• Average markets per event: 4.0
+• Average capital allocation: 94.3%
+• Average unallocated capital: 5.6%
