@@ -1,0 +1,159 @@
+{
+  "model_id": "openai/gpt-oss-120b",
+  "model_info": {
+    "model_id": "openai/gpt-oss-120b",
+    "model_pretty_name": "GPT-OSS 120B",
+    "inference_provider": "fireworks-ai",
+    "company_pretty_name": "OpenAI",
+    "open_weights": true,
+    "agent_type": "toolcalling"
+  },
+  "target_date": "2025-09-18",
+  "decision_datetime": "2025-09-18T13:01:01.599973",
+  "event_investment_decisions": [
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "event_description": "In the upcoming MLB game, scheduled for September 17 at 7:40PM ET:\nIf the Los Angeles Angels win, the market will resolve to “Angels”.\nIf the Milwaukee Brewers win, the market will resolve to “Brewers”.\nIf the game is postponed, this market will remain open until the game has been completed.\nIf the game is canceled entirely, with no make-up game, this market will resolve 50-50.\nTo know when a postponed game will be played, please check the home team's schedule on MLB.com for the listed team and look for the game described as a makeup game.",
+      "market_investment_decisions": [
+        {
+          "market_id": "600125",
+          "decision": {
+            "rationale": "The Angels vs Brewers game has already been played (Sept 17, 2025) with the Brewers winning 9-2. The market price for Angels is 0.0355, reflecting the expected outcome. Since the event is settled, there is no opportunity for a profitable mispricing. I will not place a bet.",
+            "estimated_probability": 0.0,
+            "bet": 0.0,
+            "confidence": 0
+          },
+          "market_question": "Angels vs. Brewers",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "601156",
+          "decision": {
+            "rationale": "The spread market (Brewers -1.5) settled with Brewers covering (won by 7 runs). The price of 0.85 for Brewers covering was accurate. No mispricing remains after settlement; no bet placed.",
+            "estimated_probability": 0.0,
+            "bet": 0.0,
+            "confidence": 0
+          },
+          "market_question": "Spread: Milwaukee Brewers (-1.5)",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "601157",
+          "decision": {
+            "rationale": "The Over/Under 7.5 market resolved Over (total 11 runs). The price of 0.82 for Over was close to the true probability. Event is resolved; no bet.",
+            "estimated_probability": 0.0,
+            "bet": 0.0,
+            "confidence": 0
+          },
+          "market_question": "Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "601158",
+          "decision": {
+            "rationale": "The NRFI market (no runs first inning) resolved Yes (no runs scored in the first inning). The price of 0.9955 was essentially certain. Event is settled; no bet.",
+            "estimated_probability": 0.0,
+            "bet": 0.0,
+            "confidence": 0
+          },
+          "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        }
+      ],
+      "unallocated_capital": 1.0,
+      "token_usage": {
+        "input_tokens": 14012,
+        "output_tokens": 1606
+      },
+      "timing": {
+        "start_time": 1758193177.847671,
+        "end_time": 1758193209.1707861
+      },
+      "sources_google": [
+        "https://www.espn.com/mlb/recap/_/gameId/401697184",
+        "https://www.cbssports.com/mlb/gametracker/recap/MLB_20250917_LAA@MIL/",
+        "https://picksandparlays.net/free-picks/mlb/los-angeles-angels-vs-milwaukee-brewers-picks-and-prediction-for-thursday-september-18-2025",
+        "https://www.fanduel.com/research/brewers-vs-angels-mlb-odds-prediction-point-spread-over-under-and-betting-trends-for-9-18-2025",
+        "https://www.baseball-reference.com/previews/2025/MIL202509170.shtml",
+        "https://www.espn.com/mlb/preview/_/gameId/401697184",
+        "https://baseballsavant.mlb.com/preview?game_pk=776291&game_date=2025-9-17"
+      ],
+      "sources_visit_webpage": [
+        "https://www.espn.com/mlb/recap/_/gameId/401697184"
+      ],
+      "net_gains_until_next_decision": null
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "event_description": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal fund range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThis market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's October 2025 meeting.\n\nIf the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)\n\nThe resolution source for this market is the FOMC’s statement after its meeting scheduled for October 28 - 29, 2025 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.\n\nThe level and change of the target federal funds rate is also published at the official website of the Federal Reserve at https://www.federalreserve.gov/monetarypolicy/openmarket.htm.\n\nThis market may resolve as soon as the FOMC’s statement for their October meeting with relevant data is issued. If no statement is released by the end date of the next scheduled meeting, this market will resolve to the \"No change\" bracket.\n",
+      "market_investment_decisions": [
+        {
+          "market_id": "553811",
+          "decision": {
+            "rationale": "Recent Fed policy data shows the FOMC cut rates by 25 bps on Sept 17 and futures now price an 86% chance of another cut at the October meeting. The market currently prices a Yes (25 bps cut) at 0.785, implying a 78.5% probability. This is significantly below the futures‑derived 86% odds, meaning the market is undervaluing the likelihood of a 25‑bps reduction. I therefore place a positive bet on the Yes outcome.",
+            "estimated_probability": 0.86,
+            "bet": 0.6,
+            "confidence": 8
+          },
+          "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "553812",
+          "decision": {
+            "rationale": "Futures indicate an 86% chance of a cut, leaving only about a 14% chance of no change. The market prices a Yes (no change) at 0.145, i.e., a 14.5% implied probability, which is slightly higher than the futures‑derived odds. I assess the true probability of no change to be nearer 10%, so the market is modestly overvaluing the no‑change outcome. I therefore short the Yes outcome (bet on No).",
+            "estimated_probability": 0.1,
+            "bet": -0.2,
+            "confidence": 6
+          },
+          "market_question": "No change in Fed interest rates after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        }
+      ],
+      "unallocated_capital": 0.2,
+      "token_usage": {
+        "input_tokens": 29327,
+        "output_tokens": 1945
+      },
+      "timing": {
+        "start_time": 1758193209.172077,
+        "end_time": 1758193261.597953
+      },
+      "sources_google": [
+        "https://www.cnn.com/business/live-news/federal-reserve-interest-rate-09-17-25",
+        "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250917a.htm",
+        "https://www.reuters.com/world/us/fed-rate-decision-live-updates-stocks-mixed-interest-rate-cut-expectations-2025-09-17/",
+        "https://www.usatoday.com/story/money/2025/09/17/federal-reserve-september-rate-cut-live-updates/86178612007/",
+        "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+        "https://www.cbsnews.com/news/federal-reserve-fomc-meeting-today-rate-cut-september-2025-powell-impact/",
+        "https://www.nytimes.com/live/2025/09/17/business/federal-reserve-interest-rates",
+        "https://www.investopedia.com/federal-reserve-september-meeting-live-blog-11811734",
+        "https://www.foxbusiness.com/economy/fed-expected-cut-rates-first-time-2025-amid-trump-pressure",
+        "https://www.reuters.com/business/fed-lowers-interest-rates-signals-more-cuts-ahead-miran-dissents-2025-09-17/",
+        "https://www.raymondjames.com/montana/resources/2025/09/17/september-fomc-meeting-concludes-with-first-rate-cut-of-2025",
+        "https://eyeonhousing.org/2025/09/the-fed-cuts-and-projects-more-easing-to-come/",
+        "https://finance.yahoo.com/news/fed-signals-2-more-cuts-in-2025-raises-gdp-forecast-for-the-year-183031677.html",
+        "https://www.reuters.com/world/us/feds-rate-cut-comes-with-caveats-leaving-investors-lukewarm-2025-09-18/",
+        "https://www.investors.com/news/economy/federal-reserve-meeting-sept-rate-cut-jerome-powell-trump-sp-500/",
+        "https://www.freep.com/story/money/personal-finance/susan-tompor/2025/09/17/fed-cuts-rates-credit-cards-mortgage-rates/86161430007/",
+        "https://www.cnbc.com/2025/09/17/fed-rate-decision-september-2025.html",
+        "https://www.investopedia.com/the-fed-cut-interest-rates-wednesday-but-the-path-ahead-is-much-less-clear-11812427",
+        "https://www.morningstar.com/news/marketwatch/20250917411/fed-likely-to-cut-rates-again-in-october-and-3-other-things-we-learned-from-powells-press-conference",
+        "https://www.reuters.com/business/us-rate-futures-raise-odds-further-easing-october-after-fed-cut-rates-by-25-bps-2025-09-17/"
+      ],
+      "sources_visit_webpage": [
+        "https://www.reuters.com/business/us-rate-futures-raise-odds-further-easing-october-after-fed-cut-rates-by-25-bps-2025-09-17/"
+      ],
+      "net_gains_until_next_decision": null
+    }
+  ],
+  "net_gains_until_next_decision": null
+}

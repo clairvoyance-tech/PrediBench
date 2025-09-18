@@ -964,84 +964,98 @@ def create_summary_report(market_stats: Dict[str, Dict[str, float]],
 
     with open(output_dir / 'summary_report.txt', 'w') as f:
         f.write('\n'.join(report_lines))
-
-
+from tenacity import retry, stop_after_attempt
+@retry(stop=stop_after_attempt(10))
 def main():
     """Main function to run the distribution analysis."""
 
-    # Example model configuration - replace with your desired model
-    model_info = ModelInfo(
-            model_id="Qwen/Qwen3-235B-A22B-Instruct-2507",
-            model_pretty_name="Qwen3 235B",
+    # Define models to analyze
+    models_to_analyze = [
+        ModelInfo(
+            model_id="Qwen/Qwen3-Coder-480B-A35B-Instruct",
+            model_pretty_name="Qwen3 Coder 480B",
             inference_provider="fireworks-ai",
             company_pretty_name="Qwen",
             open_weights=True,
+        ),
+        ModelInfo(
+            model_id="openai/gpt-oss-120b",
+            model_pretty_name="GPT-OSS 120B",
+            inference_provider="fireworks-ai",
+            company_pretty_name="OpenAI",
+            open_weights=True,
+            agent_type="toolcalling",
         )
+    ]
 
-    num_runs = 10
+    num_runs = 32
     num_events = 2
 
-    # Run experiments
-    logger.info("Starting distribution analysis...")
-    results = run_multiple_experiments(model_info, num_runs, num_events)
+    # Run experiments for each model
+    for model_info in models_to_analyze:
+        logger.info(f"Starting distribution analysis for {model_info.model_pretty_name}...")
+        results = run_multiple_experiments(model_info, num_runs, num_events)
 
-    if not results:
-        logger.error("No results obtained. Exiting.")
-        return
+        if not results:
+            logger.error(f"No results obtained for {model_info.model_pretty_name}. Skipping.")
+            continue
 
-    # Extract metrics and calculate statistics
-    market_metrics, event_metrics, market_by_event_metrics, market_details = extract_decision_metrics(results)
-    market_stats = calculate_statistics(market_metrics)
-    event_stats = calculate_statistics(event_metrics)
+        # Extract metrics and calculate statistics
+        market_metrics, event_metrics, market_by_event_metrics, market_details = extract_decision_metrics(results)
+        market_stats = calculate_statistics(market_metrics)
+        event_stats = calculate_statistics(event_metrics)
 
-    # Create output directory
-    output_dir = Path("llm_distribution_analysis")
-    output_dir.mkdir(exist_ok=True)
+        # Create output directory for this model
+        safe_model_name = model_info.model_pretty_name.replace(" ", "_").replace("/", "--")
+        output_dir = Path(f"llm_distribution_analysis_{safe_model_name}")
+        output_dir.mkdir(exist_ok=True)
 
-    # Create visualizations
-    plt.style.use('default')
-    sns.set_palette("husl")
+        # Create visualizations
+        plt.style.use('default')
+        sns.set_palette("husl")
 
-    logger.info("Creating market behavior overview...")
-    create_market_behavior_overview(market_metrics, model_info.model_pretty_name, output_dir)
+        logger.info("Creating market behavior overview...")
+        create_market_behavior_overview(market_metrics, model_info.model_pretty_name, output_dir)
 
-    logger.info("Creating event capital allocation analysis...")
-    create_event_capital_allocation(event_metrics, model_info.model_pretty_name, output_dir)
+        logger.info("Creating event capital allocation analysis...")
+        create_event_capital_allocation(event_metrics, model_info.model_pretty_name, output_dir)
 
-    logger.info("Creating probability vs bet analysis...")
-    create_probability_bet_analysis(market_metrics, model_info.model_pretty_name, output_dir)
+        logger.info("Creating probability vs bet analysis...")
+        create_probability_bet_analysis(market_metrics, model_info.model_pretty_name, output_dir)
 
-    logger.info("Creating confidence vs bet analysis...")
-    create_confidence_vs_bet_analysis(market_metrics, model_info.model_pretty_name, output_dir)
+        logger.info("Creating confidence vs bet analysis...")
+        create_confidence_vs_bet_analysis(market_metrics, model_info.model_pretty_name, output_dir)
 
-    logger.info("Creating market consistency analysis...")
-    create_market_consistency_analysis(market_details, model_info.model_pretty_name, output_dir)
+        logger.info("Creating market consistency analysis...")
+        create_market_consistency_analysis(market_details, model_info.model_pretty_name, output_dir)
 
-    logger.info("Creating within-event structure analysis...")
-    create_within_event_structure_analysis(market_by_event_metrics, market_details, model_info.model_pretty_name, output_dir)
+        logger.info("Creating within-event structure analysis...")
+        create_within_event_structure_analysis(market_by_event_metrics, market_details, model_info.model_pretty_name, output_dir)
 
-    # Save all results
-    logger.info("Saving results...")
-    save_results(results, market_metrics, event_metrics, market_details, market_stats, event_stats, output_dir)
+        # Save all results
+        logger.info("Saving results...")
+        save_results(results, market_metrics, event_metrics, market_details, market_stats, event_stats, output_dir)
 
-    # Create summary report
-    logger.info("Creating summary report...")
-    num_market_decisions = len(market_metrics.get('odds', []))
-    num_unique_markets = len(market_details)
-    create_summary_report(market_stats, event_stats, model_info, num_runs, num_events,
-                         num_market_decisions, num_unique_markets, output_dir)
+        # Create summary report
+        logger.info("Creating summary report...")
+        num_market_decisions = len(market_metrics.get('odds', []))
+        num_unique_markets = len(market_details)
+        create_summary_report(market_stats, event_stats, model_info, num_runs, num_events,
+                             num_market_decisions, num_unique_markets, output_dir)
 
-    # Print summary
-    logger.info(f"Analysis complete! Results saved to {output_dir}")
-    logger.info(f"Generated {len(results)} model runs with {num_market_decisions} total market decisions")
-    logger.info(f"Analyzed {num_unique_markets} unique markets across {len(results) * num_events} events")
-    logger.info(f"Generated visualizations:")
-    logger.info(f"  - market_behavior_overview.png (individual market decision patterns)")
-    logger.info(f"  - event_allocation.png (capital allocation across events)")
-    logger.info(f"  - prob_vs_bet.png (probability estimation vs betting behavior)")
-    logger.info(f"  - confidence_vs_bet.png (confidence patterns and betting)")
-    logger.info(f"  - market_consistency.png (decision consistency across runs)")
-    logger.info(f"  - within_event_structure.png (market relationships within events)")
+        # Print summary
+        logger.info(f"Analysis complete for {model_info.model_pretty_name}! Results saved to {output_dir}")
+        logger.info(f"Generated {len(results)} model runs with {num_market_decisions} total market decisions")
+        logger.info(f"Analyzed {num_unique_markets} unique markets across {len(results) * num_events} events")
+        logger.info(f"Generated visualizations:")
+        logger.info(f"  - market_behavior_overview.png (individual market decision patterns)")
+        logger.info(f"  - event_allocation.png (capital allocation across events)")
+        logger.info(f"  - prob_vs_bet.png (probability estimation vs betting behavior)")
+        logger.info(f"  - confidence_vs_bet.png (confidence patterns and betting)")
+        logger.info(f"  - market_consistency.png (decision consistency across runs)")
+        logger.info(f"  - within_event_structure.png (market relationships within events)")
+
+    logger.info("All model analyses completed!")
 
 
 if __name__ == "__main__":

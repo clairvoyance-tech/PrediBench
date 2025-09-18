@@ -1,0 +1,80 @@
+{
+  "event_id": "27824",
+  "event_title": "Fed decision in October?",
+  "event_description": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal fund range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThis market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's October 2025 meeting.\n\nIf the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)\n\nThe resolution source for this market is the FOMC’s statement after its meeting scheduled for October 28 - 29, 2025 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.\n\nThe level and change of the target federal funds rate is also published at the official website of the Federal Reserve at https://www.federalreserve.gov/monetarypolicy/openmarket.htm.\n\nThis market may resolve as soon as the FOMC’s statement for their October meeting with relevant data is issued. If no statement is released by the end date of the next scheduled meeting, this market will resolve to the \"No change\" bracket.\n",
+  "market_investment_decisions": [
+    {
+      "market_id": "553811",
+      "decision": {
+        "rationale": "Recent Fed actions indicate the September 2025 FOMC cut rates by 25 bps, and most analysts expect a second 25‑bp cut at the October meeting. However, the market currently prices a 78.5% chance of a 25‑bp cut, which is higher than my own estimate of roughly 65% based on the pace of cuts announced (two cuts this year are likely, but a third within a month is less certain). By selling the \"Yes\" side (betting negative), I exploit this overpricing. The market seems to have over‑reacted to the recent cut; the Fed typically spaces cuts to gauge inflation response, and many Fed officials have warned against too‑rapid tightening, which supports a modest probability of a second cut but not at the 78% level.",
+        "estimated_probability": 0.65,
+        "bet": -0.6,
+        "confidence": 7
+      },
+      "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+      "net_gains_at_decision_end": null,
+      "brier_score_pair_current": null
+    },
+    {
+      "market_id": "553812",
+      "decision": {
+        "rationale": "The \"No change\" market is priced at 14.5% for a Yes (i.e., no change). Given the recent cut and forward guidance that suggests two more cuts this year, a no‑change outcome still carries a non‑negligible chance, perhaps around 25%. The market therefore undervalues the no‑change scenario. Buying the Yes side captures this mispricing. The Fed may pause after the September cut to assess data, making a small but real chance of holding rates steady at the October meeting.",
+        "estimated_probability": 0.25,
+        "bet": 0.3,
+        "confidence": 6
+      },
+      "market_question": "No change in Fed interest rates after October 2025 meeting?",
+      "net_gains_at_decision_end": null,
+      "brier_score_pair_current": null
+    },
+    {
+      "market_id": "553810",
+      "decision": {
+        "rationale": "A 50+ bps cut in a single meeting would be highly unusual for the Fed, especially after already delivering a 25 bps cut in September. The market prices this outcome at 7.35%, which seems slightly high relative to my estimate of about 5%. The expected edge is small, so I will not allocate capital here.",
+        "estimated_probability": 0.05,
+        "bet": 0.0,
+        "confidence": 5
+      },
+      "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+      "net_gains_at_decision_end": null,
+      "brier_score_pair_current": null
+    },
+    {
+      "market_id": "553813",
+      "decision": {
+        "rationale": "An increase of 25 bps or more after a recent cut is extremely unlikely. The market correctly prices this at under 1% (0.75%). No mispricing worth betting on.",
+        "estimated_probability": 0.01,
+        "bet": 0.0,
+        "confidence": 7
+      },
+      "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+      "net_gains_at_decision_end": null,
+      "brier_score_pair_current": null
+    }
+  ],
+  "unallocated_capital": 0.1,
+  "token_usage": {
+    "input_tokens": 16645,
+    "output_tokens": 2440
+  },
+  "timing": {
+    "start_time": 1758193525.702112,
+    "end_time": 1758193544.976835
+  },
+  "sources_google": [
+    "https://www.reuters.com/business/fed-lowers-interest-rates-signals-more-cuts-ahead-miran-dissents-2025-09-17/",
+    "https://www.cnn.com/business/live-news/federal-reserve-interest-rate-09-17-25",
+    "https://www.cbsnews.com/news/federal-reserve-decision-september-17-fomc-meeting-interest-rates-cut/",
+    "https://www.reuters.com/world/us/fed-rate-decision-live-updates-stocks-mixed-interest-rate-cut-expectations-2025-09-17/",
+    "https://www.foxbusiness.com/economy/fed-expected-cut-rates-first-time-2025-amid-trump-pressure",
+    "https://www.investopedia.com/federal-reserve-september-meeting-live-blog-11811734",
+    "https://www.investors.com/news/economy/federal-reserve-meeting-sept-rate-cut-jerome-powell-trump-sp-500/",
+    "https://www.nytimes.com/live/2025/09/17/business/federal-reserve-interest-rates",
+    "https://www.nbcnews.com/business/economy/federal-reserve-interest-rates-decision-rcna231729",
+    "https://www.raymondjames.com/fieldstonewealth/resources/2025/09/17/september-fomc-meeting-concludes-with-first-rate-cut-of-2025",
+    "https://www.usatoday.com/story/money/2025/09/17/federal-reserve-september-rate-cut-live-updates/86178612007/",
+    "https://www.schwab.com/learn/story/fomc-meeting"
+  ],
+  "sources_visit_webpage": null,
+  "net_gains_until_next_decision": null
+}

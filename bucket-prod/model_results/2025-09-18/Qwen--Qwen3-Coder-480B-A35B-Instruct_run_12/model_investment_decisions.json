@@ -1,0 +1,246 @@
+{
+  "model_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+  "model_info": {
+    "model_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+    "model_pretty_name": "Qwen3 Coder 480B",
+    "inference_provider": "fireworks-ai",
+    "company_pretty_name": "Qwen",
+    "open_weights": true,
+    "agent_type": "code"
+  },
+  "target_date": "2025-09-18",
+  "decision_datetime": "2025-09-18T12:07:11.414109",
+  "event_investment_decisions": [
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "event_description": "In the upcoming MLB game, scheduled for September 17 at 7:40PM ET:\nIf the Los Angeles Angels win, the market will resolve to “Angels”.\nIf the Milwaukee Brewers win, the market will resolve to “Brewers”.\nIf the game is postponed, this market will remain open until the game has been completed.\nIf the game is canceled entirely, with no make-up game, this market will resolve 50-50.\nTo know when a postponed game will be played, please check the home team's schedule on MLB.com for the listed team and look for the game described as a makeup game.",
+      "market_investment_decisions": [
+        {
+          "market_id": "600125",
+          "decision": {
+            "rationale": "The Brewers won the game 9-2, so the 'Brewers' outcome is correct. The market priced 'Angels' at just 0.0355, which correctly reflects the decisive Brewers victory. There's no value in betting here as the market is accurately priced.",
+            "estimated_probability": 0.9645,
+            "bet": 0.0,
+            "confidence": 10
+          },
+          "market_question": "Angels vs. Brewers",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "601156",
+          "decision": {
+            "rationale": "The Brewers won by 7 runs (9-2), easily covering the -1.5 spread. The price for 'Milwaukee Brewers' is 0.85, which seems reasonably priced for a team that won by such a large margin. There's no clear mispricing here.",
+            "estimated_probability": 0.85,
+            "bet": 0.0,
+            "confidence": 8
+          },
+          "market_question": "Spread: Milwaukee Brewers (-1.5)",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "601157",
+          "decision": {
+            "rationale": "The total score was 11 runs (9+2), which is over 7.5. The price for 'Over' is 0.82, which seems reasonably priced given that the actual total (11) was significantly over the line (7.5). There's no clear mispricing here.",
+            "estimated_probability": 0.82,
+            "bet": 0.0,
+            "confidence": 8
+          },
+          "market_question": "Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "601158",
+          "decision": {
+            "rationale": "No runs were scored in the first inning, so 'Yes' is the correct outcome. However, the key insight is that the market is significantly mispriced. Historical data shows that approximately 50-65% of MLB games are NRFIs (No Runs First Inning). The current price for 'Yes' is 0.9955, implying only a 0.45% chance of a run being scored in the first inning, which is extremely low compared to historical norms. This represents a significant mispricing where the market is overvaluing the 'Yes' outcome. The fair probability should be around 0.5-0.65, making this a strong value bet on 'Yes'.",
+            "estimated_probability": 0.55,
+            "bet": 1.0,
+            "confidence": 9
+          },
+          "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        }
+      ],
+      "unallocated_capital": 0.0,
+      "token_usage": {
+        "input_tokens": 93688,
+        "output_tokens": 2240
+      },
+      "timing": {
+        "start_time": 1758189853.753214,
+        "end_time": 1758189956.169632
+      },
+      "sources_google": [
+        "https://www.espn.com/mlb/recap/_/gameId/401697184",
+        "https://www.cbssports.com/mlb/gametracker/recap/MLB_20250917_LAA@MIL/",
+        "https://www.youtube.com/watch?v=78vPWfVHIdg",
+        "https://www.espn.com/mlb/game/_/gameId/401697184/angels-brewers",
+        "https://www.mlb.com/angels/video/angels-vs-brewers-highlights-x2827",
+        "https://www.mlb.com/brewers/video/condensed-game-laa-mil-9-17-25",
+        "https://www.mlb.com/stories/game/776291",
+        "https://www.mlb.com/video/game/776291",
+        "https://www.mlb.com/angels/stats",
+        "https://www.baseball-reference.com/teams/LAA/2025.shtml",
+        "https://www.espn.com/mlb/team/stats/_/name/laa",
+        "https://www.mlb.com/angels/stats/team",
+        "https://sports.yahoo.com/mlb/teams/la-angels/stats/",
+        "https://www.espn.com/mlb/team/stats/_/name/laa/type/Batting",
+        "https://www.cbssports.com/mlb/teams/LAA/los-angeles-angels/stats/",
+        "https://www.foxsports.com/mlb/los-angeles-angels-team-stats",
+        "https://www.mlb.com/angels/standings",
+        "https://www.nytimes.com/athletic/mlb/team/angels/stats/",
+        "https://www.espn.com/mlb/team/stats/_/name/mil/milwaukee-brewers",
+        "https://www.mlb.com/brewers/stats",
+        "https://www.baseball-reference.com/teams/MIL/2025.shtml",
+        "https://www.cbssports.com/mlb/teams/mil/milwaukee-brewers/stats/",
+        "https://www.mlb.com/brewers/stats/team",
+        "https://sports.yahoo.com/mlb/teams/milwaukee/stats/",
+        "https://www.nytimes.com/athletic/mlb/team/brewers/stats/",
+        "https://www.espn.com/mlb/team/stats/_/name/mil/type/Batting",
+        "https://www.foxsports.com/mlb/milwaukee-brewers-team-stats",
+        "https://www.foxsports.com/mlb/milwaukee-brewers-team-stats?category=pitching&season=2025&seasonType=reg&sort=w&sortOrder=desc",
+        "http://www.mlb.com/stories?s=https%3A%2F%2Fwww.mlb.com%2Fstories%2Fgame%2F776291%3Fap%3D1%26storylocal%3Darticle-embed",
+        "https://www.foxsports.com/mlb/los-angeles-angels-vs-milwaukee-brewers-sep-17-2025-game-boxscore-93436",
+        "https://www.youtube.com/watch?v=5gYkVTa8ydw",
+        "https://www.espn.com/mlb/boxscore/_/gameId/401697184",
+        "https://www.cbssports.com/mlb/gametracker/boxscore/MLB_20250917_LAA@MIL/",
+        "https://www.jsonline.com/story/sports/mlb/brewers/2025/09/17/brewers-vs-angels-score-live-updates-highlights-magic-number/86197549007/",
+        "https://www.foxsports.com/mlb/los-angeles-angels-vs-milwaukee-brewers-sep-17-2025-game-boxscore-93436?tab=boxscore",
+        "https://www.brewcrewball.com/milwaukee-brewers-scores-standings/71713/brewers-win-another-behind-small-ball-strong-pitching-in-9-2-victory-over-angels",
+        "https://www.cbssports.com/mlb/gametracker/boxscore/MLB_20250916_LAA@MIL/",
+        "https://sports.yahoo.com/article/rested-woodruff-solid-start-perkins-022001482.html",
+        "https://www.teamrankings.com/mlb/stat/1st-inning-runs-per-game",
+        "https://www.platecrate.com/blogs/baseball-101/how-often-is-a-run-scored-in-the-first-inning-analyzing-first-inning-scoring-trends-in-baseball?srsltid=AfmBOop_VDwDrE0Qt3Yq684oWp5WZ0RgoMSVhAEPTDwd13umAxaDnnF5",
+        "https://www.reddit.com/r/baseball/comments/4tymmk/a_rough_analysis_of_runs_scored_per_inning_since/",
+        "https://www.mlb.com/news/highest-scoring-inning-is-surprising",
+        "https://community.fangraphs.com/why-are-so-many-runs-scored-in-the-bottom-of-the-first-inning/",
+        "https://c-keyes.github.io/blog_runs_by_inning.html",
+        "https://www.statmuse.com/mlb/ask/team-stats-during-first-inning-this-season",
+        "https://www.mlb.com/stats/team/runs",
+        "https://www.baseball-reference.com/tools/split_stats_lg.cgi?full=1&params=innng%7C1st%20inning%7CML%7C2021%7Cpitch%7CAB%7C",
+        "https://www.quora.com/Where-is-the-best-location-for-baseball-statistics-like-average-runs-scored-in-the-first-inning",
+        "https://www.teamrankings.com/mlb/stat/no-run-first-inning-pct",
+        "https://www.bettingpros.com/mlb/props/nrfi-yrfi/",
+        "https://www.reddit.com/r/baseball/comments/1km31dh/runs_by_inning_and_team_2025_so_far/",
+        "https://sports.betmgm.com/en/blog/mlb/nrfi-yrfi-stats-records-no-runs-first-inning-yes-runs-first-inning-runs-mlb-teams-bm03/",
+        "https://www.rotoballer.com/nrfi-betting-today-mlb-no-run-first-inning-picks-and-odds-saturday-8-9-2025/1662275",
+        "https://www.bestodds.com/odds/mlb/nrfi",
+        "https://www.mlb.com/stats/team/pitching/runs-allowed",
+        "https://dknetwork.draftkings.com/2025/08/01/best-nrfi-bets-today-no-run-first-inning-mlb-picks-for-friday-august-1/",
+        "https://www.rotoballer.com/nrfi-betting-today-mlb-no-run-first-inning-picks-and-odds-monday-7-28-2025/1654373",
+        "https://www.quora.com/How-many-no-hitters-are-thrown-annually-on-average-in-MLB"
+      ],
+      "sources_visit_webpage": [
+        "https://www.espn.com/mlb/boxscore/_/gameId/401697184"
+      ],
+      "net_gains_until_next_decision": null
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "event_description": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal fund range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThis market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's October 2025 meeting.\n\nIf the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)\n\nThe resolution source for this market is the FOMC’s statement after its meeting scheduled for October 28 - 29, 2025 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.\n\nThe level and change of the target federal funds rate is also published at the official website of the Federal Reserve at https://www.federalreserve.gov/monetarypolicy/openmarket.htm.\n\nThis market may resolve as soon as the FOMC’s statement for their October meeting with relevant data is issued. If no statement is released by the end date of the next scheduled meeting, this market will resolve to the \"No change\" bracket.\n",
+      "market_investment_decisions": [
+        {
+          "market_id": "553810",
+          "decision": {
+            "rationale": "The market is pricing a 50+ bps cut at 7.35%. Given the Fed's recent behavior of 25 bps cuts and the current upward trend in inflation, this seems appropriately priced. I will not place a bet.",
+            "estimated_probability": 0.0735,
+            "bet": 0.0,
+            "confidence": 7
+          },
+          "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "553811",
+          "decision": {
+            "rationale": "The market is pricing a 25 bps cut at 78.5%, which seems high given the recent uptick in inflation to 2.9% for core PCE. The Fed may be more cautious about further cuts, especially with inflation showing signs of increasing. I believe the probability of a 25 bps cut is lower than what the market suggests, so I'll bet against this outcome.",
+            "estimated_probability": 0.65,
+            "bet": -0.4,
+            "confidence": 8
+          },
+          "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "553812",
+          "decision": {
+            "rationale": "The market is pricing no change at 14.5%, which seems low given inflation concerns. With core PCE inflation at 2.9%, the Fed might be more inclined to pause further cuts. This seems undervalued, so I'll bet in favor of this outcome.",
+            "estimated_probability": 0.25,
+            "bet": 0.4,
+            "confidence": 8
+          },
+          "market_question": "No change in Fed interest rates after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "553813",
+          "decision": {
+            "rationale": "The market is pricing a rate increase at 0.75%, which seems appropriately low given the current economic environment and the Fed's recent cuts. I don't see strong evidence for a rate increase, so I'll not place a bet.",
+            "estimated_probability": 0.0075,
+            "bet": 0.0,
+            "confidence": 9
+          },
+          "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        }
+      ],
+      "unallocated_capital": 0.2,
+      "token_usage": {
+        "input_tokens": 116810,
+        "output_tokens": 1500
+      },
+      "timing": {
+        "start_time": 1758189956.1708732,
+        "end_time": 1758190031.4123268
+      },
+      "sources_google": [
+        "https://www.cnn.com/business/live-news/federal-reserve-interest-rate-09-17-25",
+        "https://www.reuters.com/business/fed-lowers-interest-rates-signals-more-cuts-ahead-miran-dissents-2025-09-17/",
+        "https://www.nytimes.com/live/2025/09/17/business/federal-reserve-interest-rates",
+        "https://www.federalreserve.gov/releases/h15/",
+        "https://www.cnbc.com/2025/09/17/fed-rate-decision-september-2025.html",
+        "https://www.investopedia.com/federal-reserve-september-meeting-live-blog-11811734",
+        "https://www.usatoday.com/story/money/2025/09/17/federal-reserve-september-rate-cut-live-updates/86178612007/",
+        "https://eyeonhousing.org/2025/09/the-fed-cuts-and-projects-more-easing-to-come/",
+        "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20250917.htm",
+        "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+        "https://www.reuters.com/business/fed-expected-cut-rates-update-views-trump-economic-plan-with-new-projections-2025-09-17/",
+        "https://www.investopedia.com/the-fed-cut-interest-rates-wednesday-but-the-path-ahead-is-much-less-clear-11812427",
+        "https://www.cbsnews.com/news/federal-reserve-fomc-meeting-today-rate-cut-september-2025-powell-impact/",
+        "https://www.reuters.com/business/us-rate-futures-lift-chances-further-easing-october-after-fed-cuts-rates-2025-09-17/",
+        "https://finance.yahoo.com/news/federal-reserve-cuts-interest-rates-for-first-time-this-year-sees-2-more-cuts-in-2025-180107133.html",
+        "https://www.bls.gov/news.release/empsit.nr0.htm",
+        "https://www.washingtonpost.com/opinions/2025/09/17/economy-inflation-fed-rate-cut/",
+        "https://www.conference-board.org/research/global-economy-briefs/fomc-sept-2025-analysis",
+        "https://www.bls.gov/eag/eag.us.htm",
+        "https://www.cnn.com/2025/09/11/business/stagflation-economy-fed-nightcap",
+        "https://www.census.gov/economic-indicators/",
+        "https://www.conference-board.org/research/us-forecast",
+        "https://www.bea.gov/",
+        "https://www.bea.gov/data/personal-consumption-expenditures-price-index",
+        "https://tradingeconomics.com/united-states/inflation-cpi",
+        "https://www.dallasfed.org/research/pce",
+        "https://fred.stlouisfed.org/releases/calendar?od=asc&rid=323&ve=2025-12-31&view=year&vs=2025-01-01",
+        "https://www.bea.gov/data/personal-consumption-expenditures-price-index-excluding-food-and-energy",
+        "https://www.jec.senate.gov/public/index.cfm/republicans/expenditures-update",
+        "https://fred.stlouisfed.org/series/PCE",
+        "https://www.cnbc.com/2025/08/29/pce-inflation-report-july-2025.html"
+      ],
+      "sources_visit_webpage": [
+        "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20250917.htm",
+        "https://www.bls.gov/news.release/empsit.nr0.htm"
+      ],
+      "net_gains_until_next_decision": null
+    }
+  ],
+  "net_gains_until_next_decision": null
+}

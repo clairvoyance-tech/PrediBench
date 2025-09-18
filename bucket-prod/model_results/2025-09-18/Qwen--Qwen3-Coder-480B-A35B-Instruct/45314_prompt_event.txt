@@ -1,0 +1,115 @@
+
+You are an expert prediction-market analyst. You have been given an amount of USD $1.0 to allocate on the following event from the prediction market Polymarket.
+
+<event_details>
+- Date: September 18, 2025
+- Title: Angels vs. Brewers
+- Description: In the upcoming MLB game, scheduled for September 17 at 7:40PM ET:
+If the Los Angeles Angels win, the market will resolve to “Angels”.
+If the Milwaukee Brewers win, the market will resolve to “Brewers”.
+If the game is postponed, this market will remain open until the game has been completed.
+If the game is canceled entirely, with no make-up game, this market will resolve 50-50.
+To know when a postponed game will be played, please check the home team's schedule on MLB.com for the listed team and look for the game described as a makeup game.
+- Available Markets: 4 markets, see below.
+</event_details>
+
+<available_markets>
+<market_600125>
+Market ID: 600125
+Question: Angels vs. Brewers
+Description:</market_description>In the upcoming MLB game, scheduled for September 17 at 7:40PM ET:
+If the Los Angeles Angels win, the market will resolve to “Angels”.
+If the Milwaukee Brewers win, the market will resolve to “Brewers”.
+If the game is postponed, this market will remain open until the game has been completed.
+If the game is canceled entirely, with no make-up game, this market will resolve 50-50.
+To know when a postponed game will be played, please check the home team's schedule on MLB.com for the listed team and look for the game described as a makeup game.</market_description>
+Possible outcomes: Angels, Brewers
+Price history for the outcome "Angels" (betting a positive amount means betting for this outcome, betting a negative amount means betting against this outcome):
+2025-09-16    0.5250
+2025-09-17    0.3200
+2025-09-18    0.0355
+Most recent price for "Angels": 0.0355
+</market_600125>
+
+<market_601156>
+Market ID: 601156
+Question: Spread: Milwaukee Brewers (-1.5)
+Description:</market_description>In the upcoming MLB game, scheduled for September 17 at 7:40 PM ET:
+
+This market will resolve to "Yes" if the Milwaukee Brewers win the game by 2 or more runs.
+
+Otherwise, this market will resolve to "No".
+
+If the game is postponed, this market will remain open until the game has been completed. If the game is canceled entirely, with no make-up game, this market will resolve 50–50.
+
+To know when a postponed game will be played, please check the home team's schedule on MLB.com for the listed team and look for the game described as a makeup game.
+
+This market will resolve according to the official final score published on MLB.com regardless of the number of innings completed.</market_description>
+Possible outcomes: Milwaukee Brewers, Los Angeles Angels
+Price history for the outcome "Milwaukee Brewers" (betting a positive amount means betting for this outcome, betting a negative amount means betting against this outcome):
+2025-09-17    0.45
+2025-09-18    0.85
+Most recent price for "Milwaukee Brewers": 0.85
+</market_601156>
+
+<market_601157>
+Market ID: 601157
+Question: Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5
+Description:</market_description>In the upcoming MLB game, scheduled for September 17 at 7:40 PM ET:
+
+This market will resolve to "Over" if the Los Angeles Angels and Milwaukee Brewers combine to score 8 or more runs in this game.
+
+If the combined total is less than 8, this market will resolve to "Under".
+
+If the game is postponed, this market will remain open until the game has been completed. If the game is canceled entirely, with no make-up game, this market will resolve 50–50.
+
+To know when a postponed game will be played, please check the home team's schedule on MLB.com for the listed team and look for the game described as a makeup game.
+
+This market will resolve according to the official final score published on MLB.com regardless of the number of innings completed.</market_description>
+Possible outcomes: Over, Under
+Price history for the outcome "Over" (betting a positive amount means betting for this outcome, betting a negative amount means betting against this outcome):
+2025-09-17    0.50
+2025-09-18    0.82
+Most recent price for "Over": 0.82
+</market_601157>
+
+<market_601158>
+Market ID: 601158
+Question: NRFI: Los Angeles Angels vs. Milwaukee Brewers
+Description:</market_description>In the upcoming MLB game, scheduled for September 17 at 7:40 PM ET:
+
+This market will resolve to "Yes" if no runs are scored in the 1st inning by either Los Angeles Angels or Milwaukee Brewers.
+
+This market will resolve to "No" if at least one run is scored in the 1st inning by either team.
+
+If the game is postponed, this market will remain open until the game has been completed. If the game is canceled entirely, with no make-up game, this market will resolve 50–50.
+
+To know when a postponed game will be played, please check the home team's schedule on MLB.com for the listed team and look for the game described as a makeup game.
+
+This market will resolve according to the official box score published on MLB.com, specifically the 1st inning run totals.</market_description>
+Possible outcomes: Yes, No
+Price history for the outcome "Yes" (betting a positive amount means betting for this outcome, betting a negative amount means betting against this outcome):
+2025-09-17    0.5000
+2025-09-18    0.9955
+Most recent price for "Yes": 0.9955
+</market_601158>
+</available_markets>
+
+<analysis_guidelines>
+- Use web search to gather up-to-date information about this event
+- Be critical of any sources, and be cautious of sensationalized headlines or partisan sources
+- If some web search results appear to indicate the event's outcome directly, that would be weird because the event should still be unresolved : so double-check that they do not refer to another event, for instance unrelated or long past.
+- Only place a bet when you estimate that the market is mispriced.
+</analysis_guidelines>
+
+<capital_allocation_rules>
+- You have exactly 1.0 dollars to allocate. Use the "bet" field to allocate your capital. Negative means you buy the second outcome of the market (outcomes are listed in each market description), but they still count in absolute value towards the 1.0 dollar allocation.
+- For EACH market, specify your bet. Provide exactly:
+1. market_id (str): The market ID
+2. rationale (str): Explanation for your decision and why you think this market is mispriced (or correctly priced if skipping). Write at least a few sentences. If you take a strong bet, make sure to highlight the facts you know/value that the market doesn't.
+3. estimated_probability (float, 0 to 1): The estimated_probability you think the market will settle at (your true probability estimate)
+4. confidence (int, 0 to 10): Your confidence in the estimated_probability and your bet. Should be between 0 (absolute uncertainty, you shouldn't bet if you're not confident) and 10 (absolute certainty, then you can bet high).
+5. bet (float, -1 to 1): The amount in dollars that you bet on this market (can be negative if you want to buy the opposite of the market)
+- You can of course choose not to bet on some markets: then the bet should be 0.0.
+- The sum of all absolute values of bets + unallocated_capital must equal 1.0. Example: If you bet 0.3 in market A, -0.2 in market B, and nothing on market C, your unallocated_capital should be 0.5, such that the sum is 0.3 + 0.2 + 0.5 = 1.0.
+</capital_allocation_rules>
