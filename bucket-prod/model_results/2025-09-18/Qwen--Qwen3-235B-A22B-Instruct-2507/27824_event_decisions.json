@@ -1,0 +1,78 @@
+{
+  "event_id": "27824",
+  "event_title": "Fed decision in October?",
+  "event_description": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal fund range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThis market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's October 2025 meeting.\n\nIf the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)\n\nThe resolution source for this market is the FOMC’s statement after its meeting scheduled for October 28 - 29, 2025 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.\n\nThe level and change of the target federal funds rate is also published at the official website of the Federal Reserve at https://www.federalreserve.gov/monetarypolicy/openmarket.htm.\n\nThis market may resolve as soon as the FOMC’s statement for their October meeting with relevant data is issued. If no statement is released by the end date of the next scheduled meeting, this market will resolve to the \"No change\" bracket.\n",
+  "market_investment_decisions": [
+    {
+      "market_id": "553810",
+      "decision": {
+        "rationale": "The market for a 50+ bps rate cut is currently priced at 7.35%, but actual likelihood is low. While the Fed projects ~50-60 bps of cuts by year-end, it is more likely to be split across October and December. A 50+ bps cut in October alone would be highly aggressive and disruptive, and no FOMC member has signaled such a move. Therefore, the 'Yes' outcome is unlikely. However, it is not zero, so a small short position is justified.",
+        "estimated_probability": 0.1,
+        "bet": -0.05,
+        "confidence": 7
+      },
+      "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+      "net_gains_at_decision_end": null,
+      "brier_score_pair_current": null
+    },
+    {
+      "market_id": "553811",
+      "decision": {
+        "rationale": "The market for a 25 bps cut is priced at 78.5%, but the Fed's median projection of 3.6% by end-2025 implies two more cuts after the September 2025 reduction. With only October and December meetings left, a 25 bps cut in October is the base case. Multiple statements signal a 'gradual, data-dependent' approach. This outcome is slightly underpriced: my estimate is 85%. With high confidence, this justifies a strong long bet.",
+        "estimated_probability": 0.85,
+        "bet": 0.6,
+        "confidence": 8
+      },
+      "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+      "net_gains_at_decision_end": null,
+      "brier_score_pair_current": null
+    },
+    {
+      "market_id": "553812",
+      "decision": {
+        "rationale": "The 'No change' market is priced at 14.5%, which is too high given the Fed's explicit dovish guidance and dot plot showing 3.6% median funds rate by year-end. The FOMC just cut rates and signaled at least one more cut. A pause in October is possible, but unlikely. Market overestimates uncertainty. Therefore, this market is mispriced: 'Yes' should be below 10%. I short this outcome.",
+        "estimated_probability": 0.08,
+        "bet": -0.15,
+        "confidence": 7
+      },
+      "market_question": "No change in Fed interest rates after October 2025 meeting?",
+      "net_gains_at_decision_end": null,
+      "brier_score_pair_current": null
+    },
+    {
+      "market_id": "553813",
+      "decision": {
+        "rationale": "A rate increase is extremely unlikely in October 2025. Inflation is under control, GDP growth is moderate, and the Fed has turned dovish. The dot plot shows decreasing rates, not increases. No major shock or signal would justify tightening. The 0.75% price implies a 0.75% chance — close to accurate. I do not bet aggressively, but a small short position reflects near-zero probability.",
+        "estimated_probability": 0.005,
+        "bet": -0.05,
+        "confidence": 9
+      },
+      "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+      "net_gains_at_decision_end": null,
+      "brier_score_pair_current": null
+    }
+  ],
+  "unallocated_capital": 0.1499999999999999,
+  "token_usage": {
+    "input_tokens": 34010,
+    "output_tokens": 1763
+  },
+  "timing": {
+    "start_time": 1758157995.276611,
+    "end_time": 1758158039.944948
+  },
+  "sources_google": [
+    "https://www.reuters.com/business/fed-lowers-interest-rates-signals-more-cuts-ahead-miran-dissents-2025-09-17/",
+    "https://www.cnbc.com/2025/09/17/fed-rate-decision-september-2025.html",
+    "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20250917.htm",
+    "https://www.cnn.com/business/live-news/federal-reserve-interest-rate-09-17-25",
+    "https://www.investopedia.com/the-fed-cut-interest-rates-wednesday-but-the-path-ahead-is-much-less-clear-11812427",
+    "https://www.cbsnews.com/news/federal-reserve-fomc-meeting-today-rate-cut-september-2025-powell-impact/",
+    "https://www.nytimes.com/2025/09/17/business/economy/fed-rate-cut-powell.html",
+    "https://www.wsj.com/economy/central-banking/fed-cuts-rates-by-quarter-point-and-signals-more-are-likely-dba38600?gaa_at=eafs&gaa_n=ASWzDAgKVcJuxJQ9fBSTWop_PBAGs2lzTO5Grj5daB3C8gQsk4IaDN3V2c-r&gaa_ts=68cb6034&gaa_sig=gV3zLHDBjgZkA3p-CPfxNib4NZ3gerq09mnGzlIjPnRIe4RyE1NkaPHldz8GNVTB6sgm5s9CozhFtq2h9mxbow%3D%3D"
+  ],
+  "sources_visit_webpage": [
+    "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20250917.htm"
+  ],
+  "net_gains_until_next_decision": null
+}

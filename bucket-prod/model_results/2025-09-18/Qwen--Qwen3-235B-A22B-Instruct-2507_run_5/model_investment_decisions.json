@@ -1,0 +1,179 @@
+{
+  "model_id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+  "model_info": {
+    "model_id": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+    "model_pretty_name": "Qwen3 235B",
+    "inference_provider": "fireworks-ai",
+    "company_pretty_name": "Qwen",
+    "open_weights": true,
+    "agent_type": "code"
+  },
+  "target_date": "2025-09-18",
+  "decision_datetime": "2025-09-18T03:07:05.493969",
+  "event_investment_decisions": [
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "event_description": "In the upcoming MLB game, scheduled for September 17 at 7:40PM ET:\nIf the Los Angeles Angels win, the market will resolve to “Angels”.\nIf the Milwaukee Brewers win, the market will resolve to “Brewers”.\nIf the game is postponed, this market will remain open until the game has been completed.\nIf the game is canceled entirely, with no make-up game, this market will resolve 50-50.\nTo know when a postponed game will be played, please check the home team's schedule on MLB.com for the listed team and look for the game described as a makeup game.",
+      "market_investment_decisions": [
+        {
+          "market_id": "600125",
+          "decision": {
+            "rationale": "The Angels are losing 5-1 in the 5th inning, making a win very unlikely. Historical data shows trailing teams win about 10-15% of the time in this situation, so the market-implied 3.55% chance is slightly conservative but not significantly mispriced. No strong edge.",
+            "estimated_probability": 0.04,
+            "bet": 0.0,
+            "confidence": 8
+          },
+          "market_question": "Angels vs. Brewers",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "601156",
+          "decision": {
+            "rationale": "The Brewers are winning 5-1, already covering the -1.5 spread. They are very likely to maintain a 2+ run lead. The market price of 0.85 for 'Yes' accurately reflects this high probability. No mispricing detected.",
+            "estimated_probability": 0.88,
+            "bet": 0.0,
+            "confidence": 7
+          },
+          "market_question": "Spread: Milwaukee Brewers (-1.5)",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "601157",
+          "decision": {
+            "rationale": "Total runs are 6. The over/under is 7.5, so two more runs are needed. Given both teams are hitting, over is likely. Market price of 0.82 implies 82% chance, which is reasonable. Slight lean to over, but not enough of a mispricing to justify a strong bet.",
+            "estimated_probability": 0.75,
+            "bet": 0.0,
+            "confidence": 6
+          },
+          "market_question": "Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "601158",
+          "decision": {
+            "rationale": "The market for 'NRFI: Yes' is priced at 0.9955, implying 99.55% chance no runs were scored in the first inning. However, the Brewers are leading 5-1 in the 5th inning, and based on standard game progression, it is virtually certain that runs were scored in the first inning. Therefore, 'Yes' is almost certainly false. The market is severely mispriced. The true probability of 'Yes' is near 0. This presents a strong arbitrage opportunity to bet heavily against 'Yes'.",
+            "estimated_probability": 0.005,
+            "bet": -0.99,
+            "confidence": 10
+          },
+          "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        }
+      ],
+      "unallocated_capital": 0.01,
+      "token_usage": {
+        "input_tokens": 32141,
+        "output_tokens": 2055
+      },
+      "timing": {
+        "start_time": 1758157371.675596,
+        "end_time": 1758157595.909704
+      },
+      "sources_google": [
+        "https://www.espn.com/mlb/game/_/gameId/401697184/angels-brewers",
+        "https://www.cbssports.com/mlb/gametracker/boxscore/MLB_20250917_LAA@MIL/",
+        "https://www.espn.com/mlb/matchup?gameId=401697184",
+        "https://www.cbssports.com/mlb/gametracker/boxscore/MLB_20250916_LAA@MIL/",
+        "https://www.fox6now.com/sports/brewers-angels-score-091625",
+        "https://www.mlb.com/stories/game/776295",
+        "https://sports.yahoo.com/article/milwaukee-brewers-vs-los-angeles-202804029.html"
+      ],
+      "sources_visit_webpage": [
+        "https://www.espn.com/mlb/game/_/gameId/401697184/angels-brewers",
+        "https://www.cbssports.com/mlb/gametracker/boxscore/MLB_20250917_LAA@MIL/"
+      ],
+      "net_gains_until_next_decision": null
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "event_description": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal fund range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThis market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's October 2025 meeting.\n\nIf the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)\n\nThe resolution source for this market is the FOMC’s statement after its meeting scheduled for October 28 - 29, 2025 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.\n\nThe level and change of the target federal funds rate is also published at the official website of the Federal Reserve at https://www.federalreserve.gov/monetarypolicy/openmarket.htm.\n\nThis market may resolve as soon as the FOMC’s statement for their October meeting with relevant data is issued. If no statement is released by the end date of the next scheduled meeting, this market will resolve to the \"No change\" bracket.\n",
+      "market_investment_decisions": [
+        {
+          "market_id": "553810",
+          "decision": {
+            "rationale": "The market prices a 7.35% chance of a 50+ bps rate cut in October 2025. However, the Federal Reserve's recent statements and FOMC projections indicate a cautious, gradual approach. After a 25 bps cut in September 2025, officials signaled two more 25 bps cuts in 2025, not large cuts. A 50 bps move would be a significant policy shift not supported by current inflation or labor data. Therefore, the actual probability is very low (~5%), so the market is fairly priced. No strong mispricing to exploit.",
+            "estimated_probability": 0.05,
+            "bet": 0.0,
+            "confidence": 8
+          },
+          "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "553811",
+          "decision": {
+            "rationale": "The market prices a 78.5% chance of a 25 bps rate cut, but the CME FedWatch Tool and FOMC median projections indicate a 93% likelihood of exactly a 25 bps cut in October 2025. This is based on the Fed's recent dovish pivot due to employment risks and inflation cooling toward 2%. The September 2025 cut confirmed this stance, and no new data contradicts it. This market is significantly undervalued, presenting a strong betting opportunity.",
+            "estimated_probability": 0.93,
+            "bet": 0.6,
+            "confidence": 9
+          },
+          "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "553812",
+          "decision": {
+            "rationale": "The market prices a 14.5% chance of no change in rates, but current data shows a 93% chance of a 25 bps cut, meaning only a 7% chance of no change. The consensus from the FedWatch Tool, recent Fed statements, and economic trends (cooling labor market, stable inflation) all point toward continued easing. Therefore, this market is overvalued, and betting against it (shorting) is justified. We take a negative bet, effectively betting 'No' on no change.",
+            "estimated_probability": 0.07,
+            "bet": -0.3,
+            "confidence": 8
+          },
+          "market_question": "No change in Fed interest rates after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "553813",
+          "decision": {
+            "rationale": "The market prices a 0.75% chance of a rate hike, which is approximately correct. A rate hike in October 2025 would require a sudden surge in inflation or overheating economy, which is not currently evident. Inflation is trending toward target, and the Fed has turned dovish. The actual probability of a hike is near 0%, so the market is slightly overpriced, but the edge is minimal. No strong bet warranted.",
+            "estimated_probability": 0.001,
+            "bet": 0.0,
+            "confidence": 7
+          },
+          "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        }
+      ],
+      "unallocated_capital": 0.1,
+      "token_usage": {
+        "input_tokens": 19812,
+        "output_tokens": 1377
+      },
+      "timing": {
+        "start_time": 1758157595.910927,
+        "end_time": 1758157625.493232
+      },
+      "sources_google": [
+        "https://www.reuters.com/business/fed-lowers-interest-rates-signals-more-cuts-ahead-miran-dissents-2025-09-17/",
+        "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20250917.htm",
+        "https://www.cnbc.com/2025/09/17/fed-rate-decision-september-2025.html",
+        "https://www.foxbusiness.com/economy/fed-expected-cut-rates-first-time-2025-amid-trump-pressure",
+        "https://www.wsj.com/economy/central-banking/fed-cuts-rates-by-quarter-point-and-signals-more-are-likely-dba38600?gaa_at=eafs&gaa_n=ASWzDAiI7xE_x_-YODHUZ7Qxf33NEUEpwDEzd_tl2h6OugShV09rFq5pBY6T&gaa_ts=68cb5ea5&gaa_sig=Ouq6sL7KK18iEaU_SQkNN9g7aBLpVFJMLvRStCOfgE3urWjIe5j9Xy4WEXCvNzS-VsDyh9xKpoUXTFjiVtIGjw%3D%3D",
+        "https://finance.yahoo.com/news/us-fed-set-first-rate-011951607.html",
+        "https://www.cnn.com/business/live-news/federal-reserve-interest-rate-09-17-25",
+        "https://www.morningstar.com/economy/fed-cuts-rates-signals-more-come-2025",
+        "https://www.usatoday.com/story/money/2025/09/17/federal-reserve-september-rate-cut-live-updates/86178612007/",
+        "https://www.cmegroup.com/markets/interest-rates/cme-fedwatch-tool.html",
+        "https://www.investing.com/central-banks/fed-rate-monitor",
+        "https://growbeansprout.com/tools/fedwatch",
+        "https://www.cnbc.com/2025/09/16/fed-interest-rate-decision-preview.html",
+        "https://www.chaincatcher.com/en/article/2206322",
+        "https://journalrecord.com/2025/09/16/fed-rate-cut-probabilities/",
+        "https://www.investing.com/analysis/fed-cuts-rates-by-25-basis-points-2-more-cuts-now-expects-now-expected-this-year-200667091",
+        "https://www.cmegroup.com/articles/2025/cuts-or-caution-how-uncertainty-has-shaped-the-feds-path.html"
+      ],
+      "sources_visit_webpage": null,
+      "net_gains_until_next_decision": null
+    }
+  ],
+  "net_gains_until_next_decision": null
+}
