@@ -1,0 +1,180 @@
+{
+  "model_id": "openai/gpt-oss-120b",
+  "model_info": {
+    "model_id": "openai/gpt-oss-120b",
+    "model_pretty_name": "GPT-OSS 120B",
+    "inference_provider": "fireworks-ai",
+    "company_pretty_name": "OpenAI",
+    "open_weights": true,
+    "agent_type": "toolcalling"
+  },
+  "target_date": "2025-09-18",
+  "decision_datetime": "2025-09-18T13:39:26.239921",
+  "event_investment_decisions": [
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "event_description": "In the upcoming MLB game, scheduled for September 17 at 7:40PM ET:\nIf the Los Angeles Angels win, the market will resolve to “Angels”.\nIf the Milwaukee Brewers win, the market will resolve to “Brewers”.\nIf the game is postponed, this market will remain open until the game has been completed.\nIf the game is canceled entirely, with no make-up game, this market will resolve 50-50.\nTo know when a postponed game will be played, please check the home team's schedule on MLB.com for the listed team and look for the game described as a makeup game.",
+      "market_investment_decisions": [
+        {
+          "market_id": "601157",
+          "decision": {
+            "rationale": "The game has already concluded with the Brewers beating the Angels 9-2, for a combined total of 11 runs. This exceeds the 7.5 run line, so the Over outcome will certainly resolve. The current market price for Over is 0.82, implying a market probability of only 82% despite the outcome being a certainty. This represents a clear mispricing: we can buy the Over at a discount and be guaranteed a payout. The expected profit per dollar bet is (1 - 0.82) = $0.18. With a known outcome, confidence is maximal.",
+            "estimated_probability": 0.99,
+            "bet": 1.0,
+            "confidence": 10
+          },
+          "market_question": "Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "601156",
+          "decision": {
+            "rationale": "The Brewers won by 7 runs, comfortably covering the -1.5 spread, so the 'Milwaukee Brewers' side of the spread market will resolve. The market price is 0.85, implying a 85% chance, again undervaluing a certain outcome. The profit per dollar would be $0.15. However, since we have allocated the full $1 to the higher‑ROI Over market, we place no additional bet here.",
+            "estimated_probability": 0.99,
+            "bet": 0.0,
+            "confidence": 10
+          },
+          "market_question": "Spread: Milwaukee Brewers (-1.5)",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "600125",
+          "decision": {
+            "rationale": "The Brewers win, so the 'Brewers' outcome will resolve. The price for Angels (the opposite side) is 0.0355, meaning Brewers are priced at 0.9645. Buying the winning side would yield only $0.0355 profit per dollar, a much smaller edge than the Over market. No bet allocated.",
+            "estimated_probability": 0.99,
+            "bet": 0.0,
+            "confidence": 9
+          },
+          "market_question": "Angels vs. Brewers",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "601158",
+          "decision": {
+            "rationale": "No runs were scored in the first inning, so the 'Yes' side of the NRFI market will resolve. The price is 0.9955, leaving a tiny profit of $0.0045 per dollar. Given the minuscule edge, we do not allocate capital here.",
+            "estimated_probability": 0.99,
+            "bet": 0.0,
+            "confidence": 9
+          },
+          "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        }
+      ],
+      "unallocated_capital": 0.0,
+      "token_usage": {
+        "input_tokens": 21334,
+        "output_tokens": 2555
+      },
+      "timing": {
+        "start_time": 1758195478.208988,
+        "end_time": 1758195519.847429
+      },
+      "sources_google": [
+        "https://www.espn.com/mlb/recap/_/gameId/401697184",
+        "https://www.mlb.com/stories/game-preview/776291",
+        "https://www.cbssports.com/mlb/gametracker/recap/MLB_20250917_LAA@MIL/",
+        "https://www.espn.com/mlb/preview/_/gameId/401697184",
+        "https://www.youtube.com/watch?v=oSJJpA8WN0k",
+        "https://www.baseball-reference.com/previews/2025/MIL202509170.shtml",
+        "https://picksandparlays.net/free-picks/mlb/los-angeles-angels-vs-milwaukee-brewers-picks-and-prediction-for-thursday-september-18-2025",
+        "https://baseballsavant.mlb.com/preview?game_pk=776291&game_date=2025-9-17",
+        "https://www.espn.com/mlb/boxscore/_/gameId/401697184",
+        "https://www.cbssports.com/mlb/gametracker/boxscore/MLB_20250917_LAA@MIL/",
+        "https://www.jsonline.com/story/sports/mlb/brewers/2025/09/17/brewers-vs-angels-score-live-updates-highlights-magic-number/86197549007/",
+        "https://www.brewcrewball.com/milwaukee-brewers-scores-standings/71713/brewers-win-another-behind-small-ball-strong-pitching-in-9-2-victory-over-angels",
+        "https://www.foxsports.com/mlb/los-angeles-angels-vs-milwaukee-brewers-sep-17-2025-game-boxscore-93436",
+        "https://sports.yahoo.com/article/rested-woodruff-solid-start-perkins-022001482.html",
+        "https://www.jsonline.com/story/sports/mlb/brewers/2025/09/17/brandon-woodruff-robert-gasser-among-keys-for-brewers-down-stretch/86197648007/"
+      ],
+      "sources_visit_webpage": [
+        "https://www.espn.com/mlb/boxscore/_/gameId/401697184"
+      ],
+      "net_gains_until_next_decision": null
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "event_description": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal fund range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThis market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's October 2025 meeting.\n\nIf the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)\n\nThe resolution source for this market is the FOMC’s statement after its meeting scheduled for October 28 - 29, 2025 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.\n\nThe level and change of the target federal funds rate is also published at the official website of the Federal Reserve at https://www.federalreserve.gov/monetarypolicy/openmarket.htm.\n\nThis market may resolve as soon as the FOMC’s statement for their October meeting with relevant data is issued. If no statement is released by the end date of the next scheduled meeting, this market will resolve to the \"No change\" bracket.\n",
+      "market_investment_decisions": [
+        {
+          "market_id": "553811",
+          "decision": {
+            "rationale": "Recent Reuters coverage confirms the Fed cut rates by 25 bps on September 17 and signals two more quarter-point cuts this year. Fed futures show an 86% probability of a cut at the October meeting. The market price for a 25 bps cut is 0.785, implying a 78.5% chance. Given the strong forward guidance and futures data, the true probability is likely nearer 85‑90%. This suggests the market is undervaluing the cut outcome. I have high confidence because the data comes from multiple sources (official Fed statement, futures, and credible news).",
+            "estimated_probability": 0.86,
+            "bet": 0.7,
+            "confidence": 8
+          },
+          "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "553810",
+          "decision": {
+            "rationale": "A 50+ bps cut would require a half‑percentage‑point move, which the Fed indicated was not broadly supported (only one dissenting vote for a 50 bps cut). Futures and the Fed’s own language suggest only modest easing. The market price of 0.0735 implies a 7.35% chance. I estimate the true probability around 10‑12%, slightly higher but still low. The market is not hugely mispriced, but a small short position captures the slight over‑pricing on the large cut.",
+            "estimated_probability": 0.1,
+            "bet": -0.2,
+            "confidence": 7
+          },
+          "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "553812",
+          "decision": {
+            "rationale": "No change is heavily out of favor after the recent 25 bps cut and forward guidance for further easing. The market price of 0.145 (14.5%) likely overstates the probability; I estimate ~10% chance of no change. The mispricing is modest, and with limited capital I prefer not to allocate further.",
+            "estimated_probability": 0.1,
+            "bet": 0.0,
+            "confidence": 6
+          },
+          "market_question": "No change in Fed interest rates after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "553813",
+          "decision": {
+            "rationale": "An increase in rates after a recent cut is extremely unlikely. Market price of 0.0075 (0.75%) already reflects a very low probability. I estimate perhaps 1–2% chance, so the market may slightly underprice the increase, but the edge is tiny and confidence moderate. No bet allocated.",
+            "estimated_probability": 0.015,
+            "bet": 0.0,
+            "confidence": 5
+          },
+          "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        }
+      ],
+      "unallocated_capital": 0.1,
+      "token_usage": {
+        "input_tokens": 38494,
+        "output_tokens": 3832
+      },
+      "timing": {
+        "start_time": 1758195519.8481228,
+        "end_time": 1758195566.238562
+      },
+      "sources_google": [
+        "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+        "https://www.reuters.com/world/us/fed-rate-decision-live-updates-stocks-mixed-interest-rate-cut-expectations-2025-09-17/",
+        "https://www.foxbusiness.com/economy/what-feds-outlook-interest-rate-cuts-inflation-jobs-remainder-year",
+        "https://www.investopedia.com/federal-reserve-september-meeting-live-blog-11811734",
+        "https://www.cnbc.com/2025/09/16/fed-interest-rate-decision-preview.html",
+        "https://www.wsj.com/livecoverage/fed-interest-rate-decision-live-09-17-2025?gaa_at=eafs&gaa_n=ASWzDAjpXgSJarj1eHmP1cX8MoQKMXqh1fjR7LsuvkpCWCDfy3jxW_HBxabx&gaa_ts=68cbf2c6&gaa_sig=0J_d1U2HjFcVXS-xbM7Cei9UT-VG82ru-rNTaixU8aJL3bXjP7mhGvyhrXvmgNgD0BnZfN1exX4g-dk1O0Ligg%3D%3D",
+        "https://www.cbsnews.com/news/federal-reserve-fomc-meeting-today-rate-cut-september-2025-powell-impact/",
+        "https://eyeonhousing.org/2025/09/the-fed-cuts-and-projects-more-easing-to-come/",
+        "https://www.investors.com/news/economy/federal-reserve-meeting-sept-rate-cut-jerome-powell-trump-sp-500/"
+      ],
+      "sources_visit_webpage": [
+        "https://www.reuters.com/world/us/fed-rate-decision-live-updates-stocks-mixed-interest-rate-cut-expectations-2025-09-17/"
+      ],
+      "net_gains_until_next_decision": null
+    }
+  ],
+  "net_gains_until_next_decision": null
+}
