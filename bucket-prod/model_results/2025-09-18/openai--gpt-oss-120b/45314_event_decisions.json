@@ -6,8 +6,8 @@
     {
       "market_id": "601157",
       "decision": {
-        "rationale": "The game has already concluded with the Brewers beating the Angels 9-2, for a combined total of 11 runs. This exceeds the 7.5 run line, so the Over outcome will certainly resolve. The current market price for Over is 0.82, implying a market probability of only 82% despite the outcome being a certainty. This represents a clear mispricing: we can buy the Over at a discount and be guaranteed a payout. The expected profit per dollar bet is (1 - 0.82) = $0.18. With a known outcome, confidence is maximal.",
-        "estimated_probability": 0.99,
+        "rationale": "The game has already been completed (Brewers 9, Angels 2). The combined run total was 11, which is above the 7.5 over/under line, so the Over outcome is certain (probability = 1). The market price for Over is 0.82, implying an implied probability of 82%. Because the true probability is 100% and the market is pricing it at only 82%, the contract is undervalued by 18%. Buying the Over contract therefore has an expected value of 1 - 0.82 = 0.18 per dollar staked, the highest EV among the available markets. With absolute certainty of the outcome we can place the full $1 capital here for the maximal expected profit.",
+        "estimated_probability": 1.0,
         "bet": 1.0,
         "confidence": 10
       },
@@ -16,10 +16,22 @@
       "brier_score_pair_current": null
     },
     {
+      "market_id": "600125",
+      "decision": {
+        "rationale": "The Angels‑Brewers moneyline market resolves to Brewers (Angels price = 0.0355, Brewers implied = 0.9645). Since the Brewers won, the true probability of the Brewers outcome is 1. The market undervalues the Brewers side by 3.55% (EV = 0.0355 per dollar). It is a positive EV trade, but less attractive than the Over contract, so no capital is allocated here.",
+        "estimated_probability": 1.0,
+        "bet": 0.0,
+        "confidence": 10
+      },
+      "market_question": "Angels vs. Brewers",
+      "net_gains_at_decision_end": null,
+      "brier_score_pair_current": null
+    },
+    {
       "market_id": "601156",
       "decision": {
-        "rationale": "The Brewers won by 7 runs, comfortably covering the -1.5 spread, so the 'Milwaukee Brewers' side of the spread market will resolve. The market price is 0.85, implying a 85% chance, again undervaluing a certain outcome. The profit per dollar would be $0.15. However, since we have allocated the full $1 to the higher‑ROI Over market, we place no additional bet here.",
-        "estimated_probability": 0.99,
+        "rationale": "The spread market (Brewers -1.5) also resolved in favor of the Brewers (they won by 7 runs). The market price for the Brewers covering is 0.85, implying a 85% probability. With a true probability of 100%, the contract is undervalued by 15% (EV = 0.15 per dollar). It offers a good edge but is still inferior to the Over market’s 18% edge, so no capital is allocated.",
+        "estimated_probability": 1.0,
         "bet": 0.0,
         "confidence": 10
       },
@@ -28,24 +40,12 @@
       "brier_score_pair_current": null
     },
     {
-      "market_id": "600125",
-      "decision": {
-        "rationale": "The Brewers win, so the 'Brewers' outcome will resolve. The price for Angels (the opposite side) is 0.0355, meaning Brewers are priced at 0.9645. Buying the winning side would yield only $0.0355 profit per dollar, a much smaller edge than the Over market. No bet allocated.",
-        "estimated_probability": 0.99,
-        "bet": 0.0,
-        "confidence": 9
-      },
-      "market_question": "Angels vs. Brewers",
-      "net_gains_at_decision_end": null,
-      "brier_score_pair_current": null
-    },
-    {
       "market_id": "601158",
       "decision": {
-        "rationale": "No runs were scored in the first inning, so the 'Yes' side of the NRFI market will resolve. The price is 0.9955, leaving a tiny profit of $0.0045 per dollar. Given the minuscule edge, we do not allocate capital here.",
-        "estimated_probability": 0.99,
+        "rationale": "The NRFI market pays \"Yes\" if no runs score in the 1st inning. The box score shows zero runs in the first inning, so the outcome is certain. The price for Yes is 0.9955, only a 0.45% discount to fair value, yielding a tiny expected profit of 0.0045 per dollar. Given the better opportunities elsewhere, no capital is allocated.",
+        "estimated_probability": 1.0,
         "bet": 0.0,
-        "confidence": 9
+        "confidence": 10
       },
       "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
       "net_gains_at_decision_end": null,
@@ -54,32 +54,25 @@
   ],
   "unallocated_capital": 0.0,
   "token_usage": {
-    "input_tokens": 21334,
-    "output_tokens": 2555
+    "input_tokens": 89959,
+    "output_tokens": 3015
   },
   "timing": {
-    "start_time": 1758195478.208988,
-    "end_time": 1758195519.847429
+    "start_time": 1758198102.523229,
+    "end_time": 1758198147.217802
   },
   "sources_google": [
-    "https://www.espn.com/mlb/recap/_/gameId/401697184",
-    "https://www.mlb.com/stories/game-preview/776291",
     "https://www.cbssports.com/mlb/gametracker/recap/MLB_20250917_LAA@MIL/",
-    "https://www.espn.com/mlb/preview/_/gameId/401697184",
-    "https://www.youtube.com/watch?v=oSJJpA8WN0k",
-    "https://www.baseball-reference.com/previews/2025/MIL202509170.shtml",
+    "https://www.cappertek.com/todaysPicks.asp?d=mlb-angels-vs-brewers-betting-picks-and-predictions-wednesday-september-17-2025&n=385043",
+    "https://sportsbookwire.usatoday.com/story/sports/sports-betting/2025/09/17/milwaukee-vs-los-angeles-9-18-2025-baseball-odds-lines-how-to-watch/86210941007/",
     "https://picksandparlays.net/free-picks/mlb/los-angeles-angels-vs-milwaukee-brewers-picks-and-prediction-for-thursday-september-18-2025",
-    "https://baseballsavant.mlb.com/preview?game_pk=776291&game_date=2025-9-17",
-    "https://www.espn.com/mlb/boxscore/_/gameId/401697184",
-    "https://www.cbssports.com/mlb/gametracker/boxscore/MLB_20250917_LAA@MIL/",
-    "https://www.jsonline.com/story/sports/mlb/brewers/2025/09/17/brewers-vs-angels-score-live-updates-highlights-magic-number/86197549007/",
-    "https://www.brewcrewball.com/milwaukee-brewers-scores-standings/71713/brewers-win-another-behind-small-ball-strong-pitching-in-9-2-victory-over-angels",
-    "https://www.foxsports.com/mlb/los-angeles-angels-vs-milwaukee-brewers-sep-17-2025-game-boxscore-93436",
-    "https://sports.yahoo.com/article/rested-woodruff-solid-start-perkins-022001482.html",
-    "https://www.jsonline.com/story/sports/mlb/brewers/2025/09/17/brandon-woodruff-robert-gasser-among-keys-for-brewers-down-stretch/86197648007/"
+    "https://www.fanduel.com/research/brewers-vs-angels-mlb-odds-prediction-point-spread-over-under-and-betting-trends-for-9-18-2025",
+    "https://www.foxsports.com/articles/mlb/brewers-vs-angels-prediction-odds-picks-september-17",
+    "https://www.dimers.com/news/los-angeles-angels-vs-milwaukee-brewers-prediction-mlb-thursday-09-18-2025-ac",
+    "https://sportschatplace.com/mlb-picks/angels-vs-brewers-prediction/"
   ],
   "sources_visit_webpage": [
-    "https://www.espn.com/mlb/boxscore/_/gameId/401697184"
+    "https://www.cbssports.com/mlb/gametracker/recap/MLB_20250917_LAA@MIL/"
   ],
   "net_gains_until_next_decision": null
 }

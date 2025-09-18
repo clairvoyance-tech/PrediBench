@@ -1,0 +1,63 @@
+LLM Distribution Analysis Report
+==================================================
+
+Model: GPT-OSS 120B
+Provider: OpenAI
+Number of runs: 32
+Number of events per run: 2
+Total market decisions analyzed: 233
+Unique markets: 8
+
+MARKET-LEVEL ANALYSIS:
+==============================
+
+Predicted Probability:
+  Mean: 0.498
+  Std Dev: 0.433
+  Range: [0.000, 1.000]
+  Median: 0.550
+
+Bets:
+  Mean: 0.022
+  Std Dev: 0.349
+  Range: [-1.000, 1.000]
+  Median: 0.000
+
+Confidence:
+  Mean: 7.300
+  Std Dev: 2.334
+  Range: [0.000, 10.000]
+  Median: 8.000
+
+Market-Level Consistency Analysis:
+------------------------------
+Predicted Probability consistency: Low (CV: 0.869)
+Bets consistency: Low (CV: 15.789)
+Confidence consistency: Low (CV: 0.320)
+
+EVENT-LEVEL ANALYSIS:
+==============================
+
+Total Allocated:
+  Mean: 0.724
+  Std Dev: 0.347
+  Range: [0.000, 1.000]
+  Median: 0.900
+
+Unallocated Capital:
+  Mean: 0.279
+  Std Dev: 0.345
+  Range: [0.000, 1.000]
+  Median: 0.150
+
+Num Markets Per Event:
+  Mean: 3.641
+  Std Dev: 0.715
+  Range: [2.000, 4.000]
+  Median: 4.000
+
+KEY INSIGHTS:
+====================
+• Average markets per event: 3.6
+• Average capital allocation: 72.4%
+• Average unallocated capital: 27.9%
