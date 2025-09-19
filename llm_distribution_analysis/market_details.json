@@ -1,0 +1,738 @@
+{
+  "600125": [
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Angels vs. Brewers",
+      "odds": 0.03,
+      "bet": 0.0,
+      "confidence": 10,
+      "run_index": 0
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Angels vs. Brewers",
+      "odds": 0.05,
+      "bet": 0.0,
+      "confidence": 10,
+      "run_index": 1
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Angels vs. Brewers",
+      "odds": 0.99,
+      "bet": -0.4,
+      "confidence": 10,
+      "run_index": 2
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Angels vs. Brewers",
+      "odds": 0.0,
+      "bet": -0.1,
+      "confidence": 10,
+      "run_index": 3
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Angels vs. Brewers",
+      "odds": 0.97,
+      "bet": 0.0,
+      "confidence": 10,
+      "run_index": 4
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Angels vs. Brewers",
+      "odds": 0.04,
+      "bet": 0.0,
+      "confidence": 8,
+      "run_index": 5
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Angels vs. Brewers",
+      "odds": 0.03,
+      "bet": 0.0,
+      "confidence": 9,
+      "run_index": 6
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Angels vs. Brewers",
+      "odds": 0.01,
+      "bet": -0.1,
+      "confidence": 10,
+      "run_index": 7
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Angels vs. Brewers",
+      "odds": 0.0,
+      "bet": -0.3,
+      "confidence": 10,
+      "run_index": 8
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Angels vs. Brewers",
+      "odds": 0.0355,
+      "bet": 0.0,
+      "confidence": 10,
+      "run_index": 9
+    }
+  ],
+  "601156": [
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Spread: Milwaukee Brewers (-1.5)",
+      "odds": 1.0,
+      "bet": 0.2,
+      "confidence": 10,
+      "run_index": 0
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Spread: Milwaukee Brewers (-1.5)",
+      "odds": 0.9,
+      "bet": 0.0,
+      "confidence": 9,
+      "run_index": 1
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Spread: Milwaukee Brewers (-1.5)",
+      "odds": 0.98,
+      "bet": 0.3,
+      "confidence": 9,
+      "run_index": 2
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Spread: Milwaukee Brewers (-1.5)",
+      "odds": 1.0,
+      "bet": 0.3,
+      "confidence": 10,
+      "run_index": 3
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Spread: Milwaukee Brewers (-1.5)",
+      "odds": 1.0,
+      "bet": 0.0,
+      "confidence": 10,
+      "run_index": 4
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Spread: Milwaukee Brewers (-1.5)",
+      "odds": 0.88,
+      "bet": 0.0,
+      "confidence": 7,
+      "run_index": 5
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Spread: Milwaukee Brewers (-1.5)",
+      "odds": 1.0,
+      "bet": 0.2,
+      "confidence": 10,
+      "run_index": 6
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Spread: Milwaukee Brewers (-1.5)",
+      "odds": 1.0,
+      "bet": 0.0,
+      "confidence": 10,
+      "run_index": 7
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Spread: Milwaukee Brewers (-1.5)",
+      "odds": 1.0,
+      "bet": 0.4,
+      "confidence": 10,
+      "run_index": 8
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Spread: Milwaukee Brewers (-1.5)",
+      "odds": 0.85,
+      "bet": 0.0,
+      "confidence": 9,
+      "run_index": 9
+    }
+  ],
+  "601157": [
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5",
+      "odds": 1.0,
+      "bet": 0.2,
+      "confidence": 10,
+      "run_index": 0
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5",
+      "odds": 0.85,
+      "bet": 0.0,
+      "confidence": 8,
+      "run_index": 1
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5",
+      "odds": 0.9,
+      "bet": 0.2,
+      "confidence": 8,
+      "run_index": 2
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5",
+      "odds": 1.0,
+      "bet": 0.3,
+      "confidence": 10,
+      "run_index": 3
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5",
+      "odds": 1.0,
+      "bet": 0.0,
+      "confidence": 10,
+      "run_index": 4
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5",
+      "odds": 0.75,
+      "bet": 0.0,
+      "confidence": 6,
+      "run_index": 5
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5",
+      "odds": 1.0,
+      "bet": 0.15,
+      "confidence": 10,
+      "run_index": 6
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5",
+      "odds": 1.0,
+      "bet": 0.0,
+      "confidence": 10,
+      "run_index": 7
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5",
+      "odds": 1.0,
+      "bet": 0.2,
+      "confidence": 10,
+      "run_index": 8
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5",
+      "odds": 0.0,
+      "bet": -0.9,
+      "confidence": 10,
+      "run_index": 9
+    }
+  ],
+  "601158": [
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
+      "odds": 0.0,
+      "bet": -0.6,
+      "confidence": 10,
+      "run_index": 0
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
+      "odds": 0.01,
+      "bet": -0.99,
+      "confidence": 10,
+      "run_index": 1
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
+      "odds": 0.0,
+      "bet": -0.1,
+      "confidence": 10,
+      "run_index": 2
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
+      "odds": 0.0,
+      "bet": -0.29,
+      "confidence": 10,
+      "run_index": 3
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
+      "odds": 0.0,
+      "bet": -0.9,
+      "confidence": 10,
+      "run_index": 4
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
+      "odds": 0.005,
+      "bet": -0.99,
+      "confidence": 10,
+      "run_index": 5
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
+      "odds": 0.0,
+      "bet": -0.6,
+      "confidence": 10,
+      "run_index": 6
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
+      "odds": 0.005,
+      "bet": -0.8,
+      "confidence": 10,
+      "run_index": 7
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
+      "odds": 1.0,
+      "bet": 0.0,
+      "confidence": 10,
+      "run_index": 8
+    },
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
+      "odds": 0.9955,
+      "bet": 0.0,
+      "confidence": 10,
+      "run_index": 9
+    }
+  ],
+  "553810": [
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+      "odds": 0.6,
+      "bet": 0.6,
+      "confidence": 9,
+      "run_index": 0
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+      "odds": 0.05,
+      "bet": -0.1,
+      "confidence": 8,
+      "run_index": 1
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+      "odds": 0.02,
+      "bet": -0.25,
+      "confidence": 9,
+      "run_index": 2
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+      "odds": 0.35,
+      "bet": 0.45,
+      "confidence": 7,
+      "run_index": 3
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+      "odds": 0.1,
+      "bet": 0.1,
+      "confidence": 4,
+      "run_index": 4
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+      "odds": 0.05,
+      "bet": 0.0,
+      "confidence": 8,
+      "run_index": 5
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+      "odds": 0.1,
+      "bet": 0.1,
+      "confidence": 6,
+      "run_index": 6
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+      "odds": 0.05,
+      "bet": -0.1,
+      "confidence": 8,
+      "run_index": 7
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+      "odds": 0.049,
+      "bet": -0.15,
+      "confidence": 8,
+      "run_index": 8
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+      "odds": 0.1,
+      "bet": -0.05,
+      "confidence": 7,
+      "run_index": 9
+    }
+  ],
+  "553811": [
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+      "odds": 0.3,
+      "bet": -0.3,
+      "confidence": 8,
+      "run_index": 0
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+      "odds": 0.85,
+      "bet": 0.5,
+      "confidence": 9,
+      "run_index": 1
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+      "odds": 0.9,
+      "bet": 0.45,
+      "confidence": 9,
+      "run_index": 2
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+      "odds": 0.9,
+      "bet": 0.3,
+      "confidence": 9,
+      "run_index": 3
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+      "odds": 0.8,
+      "bet": 0.5,
+      "confidence": 8,
+      "run_index": 4
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+      "odds": 0.93,
+      "bet": 0.6,
+      "confidence": 9,
+      "run_index": 5
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+      "odds": 0.75,
+      "bet": -0.25,
+      "confidence": 7,
+      "run_index": 6
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+      "odds": 0.85,
+      "bet": 0.6,
+      "confidence": 9,
+      "run_index": 7
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+      "odds": 0.65,
+      "bet": -0.3,
+      "confidence": 7,
+      "run_index": 8
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+      "odds": 0.85,
+      "bet": 0.6,
+      "confidence": 8,
+      "run_index": 9
+    }
+  ],
+  "553812": [
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "No change in Fed interest rates after October 2025 meeting?",
+      "odds": 0.08,
+      "bet": 0.0,
+      "confidence": 7,
+      "run_index": 0
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "No change in Fed interest rates after October 2025 meeting?",
+      "odds": 0.1,
+      "bet": -0.2,
+      "confidence": 7,
+      "run_index": 1
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "No change in Fed interest rates after October 2025 meeting?",
+      "odds": 0.04,
+      "bet": -0.2,
+      "confidence": 8,
+      "run_index": 2
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "No change in Fed interest rates after October 2025 meeting?",
+      "odds": 0.05,
+      "bet": -0.15,
+      "confidence": 8,
+      "run_index": 3
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "No change in Fed interest rates after October 2025 meeting?",
+      "odds": 0.1,
+      "bet": -0.25,
+      "confidence": 7,
+      "run_index": 4
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "No change in Fed interest rates after October 2025 meeting?",
+      "odds": 0.07,
+      "bet": -0.3,
+      "confidence": 8,
+      "run_index": 5
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "No change in Fed interest rates after October 2025 meeting?",
+      "odds": 0.1,
+      "bet": -0.3,
+      "confidence": 7,
+      "run_index": 6
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "No change in Fed interest rates after October 2025 meeting?",
+      "odds": 0.1,
+      "bet": -0.2,
+      "confidence": 8,
+      "run_index": 7
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "No change in Fed interest rates after October 2025 meeting?",
+      "odds": 0.3,
+      "bet": 0.45,
+      "confidence": 7,
+      "run_index": 8
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "No change in Fed interest rates after October 2025 meeting?",
+      "odds": 0.08,
+      "bet": -0.15,
+      "confidence": 7,
+      "run_index": 9
+    }
+  ],
+  "553813": [
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+      "odds": 0.02,
+      "bet": 0.0,
+      "confidence": 8,
+      "run_index": 0
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+      "odds": 0.001,
+      "bet": -0.15,
+      "confidence": 10,
+      "run_index": 1
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+      "odds": 0.001,
+      "bet": -0.1,
+      "confidence": 10,
+      "run_index": 2
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+      "odds": 0.001,
+      "bet": -0.1,
+      "confidence": 9,
+      "run_index": 3
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+      "odds": 0.005,
+      "bet": -0.15,
+      "confidence": 9,
+      "run_index": 4
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+      "odds": 0.001,
+      "bet": 0.0,
+      "confidence": 7,
+      "run_index": 5
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+      "odds": 0.0,
+      "bet": -0.2,
+      "confidence": 9,
+      "run_index": 6
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+      "odds": 0.001,
+      "bet": 0.0,
+      "confidence": 10,
+      "run_index": 7
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+      "odds": 0.001,
+      "bet": -0.1,
+      "confidence": 9,
+      "run_index": 8
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+      "odds": 0.005,
+      "bet": -0.05,
+      "confidence": 9,
+      "run_index": 9
+    }
+  ]
+}

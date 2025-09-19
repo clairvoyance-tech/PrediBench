@@ -1,0 +1,54 @@
+{
+  "event_id": "27824",
+  "event_title": "Fed decision in October?",
+  "event_description": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal fund range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThis market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's October 2025 meeting.\n\nIf the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)\n\nThe resolution source for this market is the FOMC’s statement after its meeting scheduled for October 28 - 29, 2025 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.\n\nThe level and change of the target federal funds rate is also published at the official website of the Federal Reserve at https://www.federalreserve.gov/monetarypolicy/openmarket.htm.\n\nThis market may resolve as soon as the FOMC’s statement for their October meeting with relevant data is issued. If no statement is released by the end date of the next scheduled meeting, this market will resolve to the \"No change\" bracket.\n",
+  "market_investment_decisions": [
+    {
+      "market_id": "553811",
+      "decision": {
+        "rationale": "Recent Fed communication (Sept 17 meeting) announced a 25‑basis‑point cut and explicitly signaled another cut at the October meeting. Rate‑futures imply >90% chance of a cut, while the market price for a 25‑bp cut is only 0.785 (≈78.5% implied probability). The discrepancy suggests the market undervalues the likelihood of a modest cut. I estimate a true probability of about 90% for a 25‑bp reduction at the Oct 28‑29 meeting. With a high confidence (8/10) given multiple sources (Fed statement, dot‑plot, futures), I place a positive bet on the Yes outcome.",
+        "estimated_probability": 0.9,
+        "bet": 0.5,
+        "confidence": 8
+      },
+      "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+      "net_gains_at_decision_end": null,
+      "brier_score_pair_current": null
+    },
+    {
+      "market_id": "553812",
+      "decision": {
+        "rationale": "The same Fed communications emphasise that the policy stance is easing, and no‑change scenarios are now considered unlikely. The market currently assigns a 14.5% probability to \"No change\" (price 0.145). Given the clear forward guidance for at least one more cut, I assess the true probability of zero change at roughly 5% (or lower). This suggests the market overprices the No‑change outcome. I therefore bet against the Yes outcome (i.e., bet on No) with moderate confidence (6/10).",
+        "estimated_probability": 0.05,
+        "bet": -0.3,
+        "confidence": 6
+      },
+      "market_question": "No change in Fed interest rates after October 2025 meeting?",
+      "net_gains_at_decision_end": null,
+      "brier_score_pair_current": null
+    }
+  ],
+  "unallocated_capital": 0.2,
+  "token_usage": {
+    "input_tokens": 18527,
+    "output_tokens": 1985
+  },
+  "timing": {
+    "start_time": 1758198147.2188,
+    "end_time": 1758198172.4586911
+  },
+  "sources_google": [
+    "https://www.foxbusiness.com/economy/what-feds-outlook-interest-rate-cuts-inflation-jobs-remainder-year",
+    "https://www.reuters.com/business/fed-lowers-interest-rates-signals-more-cuts-ahead-miran-dissents-2025-09-17/",
+    "https://www.nytimes.com/live/2025/09/17/business/federal-reserve-interest-rates",
+    "https://www.investopedia.com/the-fed-cut-interest-rates-wednesday-but-the-path-ahead-is-much-less-clear-11812427",
+    "https://www.foxbusiness.com/economy/fed-expected-cut-rates-first-time-2025-amid-trump-pressure",
+    "https://www.cbsnews.com/news/federal-reserve-fomc-meeting-today-rate-cut-september-2025-powell-impact/",
+    "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+    "https://www.cnn.com/business/live-news/federal-reserve-interest-rate-09-17-25"
+  ],
+  "sources_visit_webpage": [
+    "https://www.reuters.com/business/fed-lowers-interest-rates-signals-more-cuts-ahead-miran-dissents-2025-09-17/"
+  ],
+  "net_gains_until_next_decision": null
+}

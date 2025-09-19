@@ -1,0 +1,167 @@
+
+You are an expert prediction-market analyst. You have been given an amount of USD $1.0 to allocate on the following event from the prediction market Polymarket.
+
+<event_details>
+- Date: September 18, 2025
+- Title: Fed decision in October?
+- Description: The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal fund range are made by the Federal Open Market Committee (FOMC) meetings.
+
+This market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's October 2025 meeting.
+
+If the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)
+
+The resolution source for this market is the FOMC’s statement after its meeting scheduled for October 28 - 29, 2025 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.
+
+The level and change of the target federal funds rate is also published at the official website of the Federal Reserve at https://www.federalreserve.gov/monetarypolicy/openmarket.htm.
+
+This market may resolve as soon as the FOMC’s statement for their October meeting with relevant data is issued. If no statement is released by the end date of the next scheduled meeting, this market will resolve to the "No change" bracket.
+
+- Available Markets: 4 markets, see below.
+</event_details>
+
+<available_markets>
+<market_553810>
+Market ID: 553810
+Question: Fed decreases interest rates by 50+ bps after October 2025 meeting?
+Description:</market_description>The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal fund range are made by the Federal Open Market Committee (FOMC) meetings.
+
+This market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's October 2025 meeting.
+
+If the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)
+
+The resolution source for this market is the FOMC’s statement after its meeting scheduled for October 28 - 29, 2025 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.
+
+The level and change of the target federal funds rate is also published at the official website of the Federal Reserve at https://www.federalreserve.gov/monetarypolicy/openmarket.htm.
+
+This market may resolve as soon as the FOMC’s statement for their October meeting with relevant data is issued. If no statement is released by the end date of the next scheduled meeting, this market will resolve to the "No change" bracket.</market_description>
+Possible outcomes: Yes, No
+Price history for the outcome "Yes" (betting a positive amount means betting for this outcome, betting a negative amount means betting against this outcome):
+2025-08-30    0.0685
+2025-08-31    0.0645
+2025-09-01    0.0650
+2025-09-02    0.0670
+2025-09-03    0.0665
+2025-09-04    0.0720
+2025-09-05    0.0660
+2025-09-06    0.0605
+2025-09-07    0.0520
+2025-09-08    0.0520
+2025-09-09    0.0655
+2025-09-10    0.0840
+2025-09-11    0.1165
+2025-09-12    0.1215
+2025-09-13    0.0870
+2025-09-14    0.1010
+2025-09-15    0.0960
+2025-09-16    0.1070
+2025-09-17    0.1105
+2025-09-18    0.0735
+Most recent price for "Yes": 0.0735
+</market_553810>
+
+<market_553811>
+Market ID: 553811
+Question: Fed decreases interest rates by 25 bps after October 2025 meeting?
+Description: Same as the previous market.
+Possible outcomes: Yes, No
+Price history for the outcome "Yes" (betting a positive amount means betting for this outcome, betting a negative amount means betting against this outcome):
+2025-08-30    0.470
+2025-08-31    0.470
+2025-09-01    0.475
+2025-09-02    0.455
+2025-09-03    0.480
+2025-09-04    0.480
+2025-09-05    0.585
+2025-09-06    0.510
+2025-09-07    0.530
+2025-09-08    0.545
+2025-09-09    0.540
+2025-09-10    0.610
+2025-09-11    0.600
+2025-09-12    0.605
+2025-09-13    0.625
+2025-09-14    0.675
+2025-09-15    0.685
+2025-09-16    0.695
+2025-09-17    0.685
+2025-09-18    0.785
+Most recent price for "Yes": 0.785
+</market_553811>
+
+<market_553812>
+Market ID: 553812
+Question: No change in Fed interest rates after October 2025 meeting?
+Description: Same as the previous market.
+Possible outcomes: Yes, No
+Price history for the outcome "Yes" (betting a positive amount means betting for this outcome, betting a negative amount means betting against this outcome):
+2025-08-30    0.440
+2025-08-31    0.450
+2025-09-01    0.455
+2025-09-02    0.455
+2025-09-03    0.445
+2025-09-04    0.440
+2025-09-05    0.355
+2025-09-06    0.425
+2025-09-07    0.410
+2025-09-08    0.400
+2025-09-09    0.390
+2025-09-10    0.310
+2025-09-11    0.265
+2025-09-12    0.265
+2025-09-13    0.260
+2025-09-14    0.215
+2025-09-15    0.215
+2025-09-16    0.195
+2025-09-17    0.200
+2025-09-18    0.145
+Most recent price for "Yes": 0.145
+</market_553812>
+
+<market_553813>
+Market ID: 553813
+Question: Fed increases interest rates by 25+ bps after October 2025 meeting?
+Description: Same as the previous market.
+Possible outcomes: Yes, No
+Price history for the outcome "Yes" (betting a positive amount means betting for this outcome, betting a negative amount means betting against this outcome):
+2025-08-30    0.0095
+2025-08-31    0.0095
+2025-09-01    0.0085
+2025-09-02    0.0085
+2025-09-03    0.0085
+2025-09-04    0.0085
+2025-09-05    0.0085
+2025-09-06    0.0085
+2025-09-07    0.0085
+2025-09-08    0.0085
+2025-09-09    0.0095
+2025-09-10    0.0090
+2025-09-11    0.0085
+2025-09-12    0.0085
+2025-09-13    0.0085
+2025-09-14    0.0085
+2025-09-15    0.0085
+2025-09-16    0.0085
+2025-09-17    0.0075
+2025-09-18    0.0075
+Most recent price for "Yes": 0.0075
+</market_553813>
+</available_markets>
+
+<analysis_guidelines>
+- Use web search to gather up-to-date information about this event
+- Be critical of any sources, and be cautious of sensationalized headlines or partisan sources
+- If some web search results appear to indicate the event's outcome directly, that would be weird because the event should still be unresolved : so double-check that they do not refer to another event, for instance unrelated or long past.
+- Only place a bet when you estimate that the market is mispriced.
+</analysis_guidelines>
+
+<capital_allocation_rules>
+- You have exactly 1.0 dollars to allocate. Use the "bet" field to allocate your capital. Negative means you buy the second outcome of the market (outcomes are listed in each market description), but they still count in absolute value towards the 1.0 dollar allocation.
+- For EACH market, specify your bet. Provide exactly:
+1. market_id (str): The market ID
+2. rationale (str): Explanation for your decision and why you think this market is mispriced (or correctly priced if skipping). Write at least a few sentences. If you take a strong bet, make sure to highlight the facts you know/value that the market doesn't.
+3. estimated_probability (float, 0 to 1): The estimated_probability you think the market will settle at (your true probability estimate)
+4. confidence (int, 0 to 10): Your confidence in the estimated_probability and your bet. Should be between 0 (absolute uncertainty, you shouldn't bet if you're not confident) and 10 (absolute certainty, then you can bet high).
+5. bet (float, -1 to 1): The amount in dollars that you bet on this market (can be negative if you want to buy the opposite of the market)
+- You can of course choose not to bet on some markets: then the bet should be 0.0.
+- The sum of all absolute values of bets + unallocated_capital must equal 1.0. Example: If you bet 0.3 in market A, -0.2 in market B, and nothing on market C, your unallocated_capital should be 0.5, such that the sum is 0.3 + 0.2 + 0.5 = 1.0.
+</capital_allocation_rules>

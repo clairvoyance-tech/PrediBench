@@ -1,0 +1,215 @@
+{
+  "model_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+  "model_info": {
+    "model_id": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+    "model_pretty_name": "Qwen3 Coder 480B",
+    "inference_provider": "fireworks-ai",
+    "company_pretty_name": "Qwen",
+    "open_weights": true,
+    "agent_type": "code"
+  },
+  "target_date": "2025-09-18",
+  "decision_datetime": "2025-09-18T10:18:13.540558",
+  "event_investment_decisions": [
+    {
+      "event_id": "45314",
+      "event_title": "Angels vs. Brewers",
+      "event_description": "In the upcoming MLB game, scheduled for September 17 at 7:40PM ET:\nIf the Los Angeles Angels win, the market will resolve to “Angels”.\nIf the Milwaukee Brewers win, the market will resolve to “Brewers”.\nIf the game is postponed, this market will remain open until the game has been completed.\nIf the game is canceled entirely, with no make-up game, this market will resolve 50-50.\nTo know when a postponed game will be played, please check the home team's schedule on MLB.com for the listed team and look for the game described as a makeup game.",
+      "market_investment_decisions": [
+        {
+          "market_id": "600125",
+          "decision": {
+            "rationale": "The Brewers won the game 9-2. The market correctly priced this outcome with the Brewers at 0.9645 (implied) and Angels at 0.0355. No value opportunity here as the market was efficient.",
+            "estimated_probability": 0.9645,
+            "bet": 0.0,
+            "confidence": 10
+          },
+          "market_question": "Angels vs. Brewers",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "601156",
+          "decision": {
+            "rationale": "The Brewers won by 7 runs, easily covering the -1.5 spread. The market priced this at 0.85, which was accurate given the large margin of victory. No significant mispricing.",
+            "estimated_probability": 0.95,
+            "bet": 0.0,
+            "confidence": 9
+          },
+          "market_question": "Spread: Milwaukee Brewers (-1.5)",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "601157",
+          "decision": {
+            "rationale": "The game had a total of 11 runs (9+2), going OVER the 7.5 line. The market priced this at 0.82 for the Over, which seems fair given the teams involved. The Brewers are a high-scoring team and Angels have inconsistent pitching.",
+            "estimated_probability": 0.85,
+            "bet": 0.0,
+            "confidence": 8
+          },
+          "market_question": "Los Angeles Angels vs. Milwaukee Brewers: O/U 7.5",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "601158",
+          "decision": {
+            "rationale": "The market priced this at 0.9955, indicating a very high probability of no runs in the first inning. Given that this occurred in the actual game (Brewers 9-2 Angels), the market was extremely accurate. No betting opportunity as the outcome has been confirmed.",
+            "estimated_probability": 0.99,
+            "bet": 0.0,
+            "confidence": 10
+          },
+          "market_question": "NRFI: Los Angeles Angels vs. Milwaukee Brewers",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        }
+      ],
+      "unallocated_capital": 1.0,
+      "token_usage": {
+        "input_tokens": 16820,
+        "output_tokens": 1236
+      },
+      "timing": {
+        "start_time": 1758183357.128564,
+        "end_time": 1758183393.504693
+      },
+      "sources_google": [
+        "https://www.espn.com/mlb/recap/_/gameId/401697184",
+        "https://www.cappertek.com/todaysPicks.asp?d=mlb-angels-vs-brewers-betting-picks-and-predictions-wednesday-september-17-2025&n=385043",
+        "https://picksandparlays.net/free-picks/mlb/los-angeles-angels-vs-milwaukee-brewers-picks-and-prediction-for-thursday-september-18-2025",
+        "https://www.cbssports.com/mlb/gametracker/recap/MLB_20250917_LAA@MIL/",
+        "https://www.fanduel.com/research/brewers-vs-angels-mlb-odds-prediction-point-spread-over-under-and-betting-trends-for-9-18-2025",
+        "https://www.bleachernation.com/picks/2025/09/17/brewers-vs-angels-prediction-expert-picks-odds-stats-best-bets-thursday-september-18-2025/",
+        "https://sportschatplace.com/mlb-picks/angels-vs-brewers-prediction/",
+        "https://pickdawgz.com/mlb-picks/los-angeles-angels-vs-milwaukee-brewers-prediction-9-17-2025-todays-mlb-picks-2025-09-17/",
+        "https://www.mlb.com/angels/stats",
+        "https://www.baseball-reference.com/teams/LAA/2025.shtml",
+        "https://www.espn.com/mlb/team/stats/_/name/laa",
+        "https://www.mlb.com/angels/stats/team",
+        "https://sports.yahoo.com/mlb/teams/la-angels/stats/",
+        "https://www.espn.com/mlb/team/stats/_/name/laa/type/Batting",
+        "https://www.cbssports.com/mlb/teams/LAA/los-angeles-angels/stats/",
+        "https://www.foxsports.com/mlb/los-angeles-angels-team-stats",
+        "https://www.mlb.com/angels/standings",
+        "https://www.nytimes.com/athletic/mlb/team/angels/stats/",
+        "https://www.espn.com/mlb/team/stats/_/name/mil/milwaukee-brewers",
+        "https://www.mlb.com/brewers/stats",
+        "https://www.baseball-reference.com/teams/MIL/2025.shtml",
+        "https://www.cbssports.com/mlb/teams/mil/milwaukee-brewers/stats/",
+        "https://www.statmuse.com/mlb/team/milwaukee-brewers-92/2025",
+        "https://www.nytimes.com/athletic/mlb/team/brewers/stats/",
+        "https://www.mlb.com/brewers/stats/team",
+        "https://sports.yahoo.com/mlb/teams/milwaukee/stats/",
+        "https://www.foxsports.com/mlb/milwaukee-brewers-team-stats",
+        "https://www.espn.com/mlb/team/stats?name=Mil&type=Bateo",
+        "https://www.teamrankings.com/mlb/matchup/angels-brewers-2025-09-17/head-to-head",
+        "https://abc30.com/post/angels-take-6-game-losing-streak-matchup-brewers/17840003/",
+        "https://m.aiscore.com/head-to-head/baseball/los-angeles-angels-vs-milwaukee-brewers",
+        "https://www.baseball-reference.com/boxes/MIL/MIL202509160.shtml",
+        "https://www.statmuse.com/mlb/ask?q=brewers+vs+angels+all-time+head+to+head+record",
+        "https://www.espn.com/mlb/preview/_/gameId/401697184",
+        "https://www.aiscore.com/zht/baseball/match-milwaukee-brewers-los-angeles-angels/9gklnc59848um7x/h2h",
+        "https://www.xscores.com/baseball/match/milwaukee-brewers-vs-los-angeles-angels/17-09-2025/2439536",
+        "https://www.sofascore.com/baseball/match/los-angeles-angels-milwaukee-brewers/FxbsEtc"
+      ],
+      "sources_visit_webpage": null,
+      "net_gains_until_next_decision": null
+    },
+    {
+      "event_id": "27824",
+      "event_title": "Fed decision in October?",
+      "event_description": "The FED interest rates are defined in this market by the upper bound of the target federal funds range. The decisions on the target federal fund range are made by the Federal Open Market Committee (FOMC) meetings.\n\nThis market will resolve to the amount of basis points the upper bound of the target federal funds rate is changed by versus the level it was prior to the Federal Reserve's October 2025 meeting.\n\nIf the target federal funds rate is changed to a level not expressed in the displayed options, the change will be rounded up to the nearest 25 and will resolve to the relevant bracket. (e.g. if there's a cut/increase of 12.5 bps it will be considered to be 25 bps)\n\nThe resolution source for this market is the FOMC’s statement after its meeting scheduled for October 28 - 29, 2025 according to the official calendar: https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm.\n\nThe level and change of the target federal funds rate is also published at the official website of the Federal Reserve at https://www.federalreserve.gov/monetarypolicy/openmarket.htm.\n\nThis market may resolve as soon as the FOMC’s statement for their October meeting with relevant data is issued. If no statement is released by the end date of the next scheduled meeting, this market will resolve to the \"No change\" bracket.\n",
+      "market_investment_decisions": [
+        {
+          "market_id": "553810",
+          "decision": {
+            "rationale": "The market is pricing only a 7.35% probability of a 50+ basis point cut in October. However, Governor Miran just dissented in favor of a 50 basis point cut at the September meeting, suggesting there is at least some support for larger cuts among policymakers. Given economic uncertainties and the possibility of more aggressive action if economic data weakens further, this market seems potentially undervalued. I'm placing a modest bet on this outcome.",
+            "estimated_probability": 0.15,
+            "bet": 0.2,
+            "confidence": 6
+          },
+          "market_question": "Fed decreases interest rates by 50+ bps after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "553811",
+          "decision": {
+            "rationale": "The market is pricing a 78.5% probability of a 25 basis point cut, which aligns with the Federal Reserve's recent signaling that two more cuts are expected for 2025. Given that the Fed just implemented a 25 bps cut and explicitly signaled more cuts, this market appears to be fairly priced. I won't place a bet here.",
+            "estimated_probability": 0.785,
+            "bet": 0.0,
+            "confidence": 8
+          },
+          "market_question": "Fed decreases interest rates by 25 bps after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "553812",
+          "decision": {
+            "rationale": "The market is pricing a 14.5% probability of no change in rates. Given the Federal Reserve's explicit signaling of additional cuts for 2025, this seems appropriately priced. However, there's always some chance that economic data could surprise to the upside, causing the Fed to maintain rates. I'll place a small bet against this outcome (buying 'No').",
+            "estimated_probability": 0.145,
+            "bet": -0.15,
+            "confidence": 7
+          },
+          "market_question": "No change in Fed interest rates after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        },
+        {
+          "market_id": "553813",
+          "decision": {
+            "rationale": "The market is pricing only a 0.75% probability of a rate increase. Given the current economic conditions with moderated growth and the Fed's recent cut, this seems appropriately priced. I won't place a bet here.",
+            "estimated_probability": 0.0075,
+            "bet": 0.0,
+            "confidence": 9
+          },
+          "market_question": "Fed increases interest rates by 25+ bps after October 2025 meeting?",
+          "net_gains_at_decision_end": null,
+          "brier_score_pair_current": null
+        }
+      ],
+      "unallocated_capital": 0.65,
+      "token_usage": {
+        "input_tokens": 114075,
+        "output_tokens": 1316
+      },
+      "timing": {
+        "start_time": 1758183393.505136,
+        "end_time": 1758183493.539669
+      },
+      "sources_google": [
+        "https://www.reuters.com/business/fed-lowers-interest-rates-signals-more-cuts-ahead-miran-dissents-2025-09-17/",
+        "https://www.cnn.com/business/live-news/federal-reserve-interest-rate-09-17-25",
+        "https://www.investopedia.com/the-fed-cut-interest-rates-wednesday-but-the-path-ahead-is-much-less-clear-11812427",
+        "https://www.cbsnews.com/news/federal-reserve-fomc-meeting-today-rate-cut-september-2025-powell-impact/",
+        "https://fortune.com/2025/09/17/markets-fed-rate-cut-economic-outlook/",
+        "https://www.nytimes.com/live/2025/09/17/business/federal-reserve-interest-rates",
+        "https://www.cnbc.com/2025/09/17/here-are-five-key-takeaways-from-the-feds-big-interest-rate-decision.html",
+        "https://eyeonhousing.org/2025/09/the-fed-cuts-and-projects-more-easing-to-come/",
+        "https://www.morningstar.com/news/marketwatch/20250917411/fed-likely-to-cut-rates-again-in-october-and-3-other-things-we-learned-from-powells-press-conference",
+        "https://www.reuters.com/world/us/feds-rate-cut-comes-with-caveats-leaving-investors-lukewarm-2025-09-18/",
+        "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250917a.htm",
+        "https://www.cnbc.com/2025/09/17/fed-rate-decision-september-2025.html",
+        "https://finance.yahoo.com/news/fed-signals-2-more-cuts-in-2025-raises-gdp-forecast-for-the-year-183031677.html",
+        "https://www.usatoday.com/story/money/2025/09/17/federal-reserve-september-rate-cut-live-updates/86178612007/",
+        "https://www.morningstar.com/economy/fed-cuts-rates-signals-more-come-2025",
+        "https://www.foxbusiness.com/economy/federal-reserve-interest-rate-decision-september-2025",
+        "https://www.investopedia.com/federal-reserve-september-meeting-interest-rate-decision-11811834",
+        "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20250917.htm",
+        "https://www.federalreserve.gov/monetarypolicy/files/fomcprojtabl20250917.pdf",
+        "https://www.raymondjames.com/hamiltonhamilton/resources/2025/09/17/september-fomc-meeting-concludes-with-first-rate-cut-of-2025",
+        "https://global.morningstar.com/en-nd/economy/fed-cuts-rates-signals-more-come-2025",
+        "https://www.investopedia.com/federal-reserve-september-meeting-live-blog-11811734"
+      ],
+      "sources_visit_webpage": [
+        "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
+        "https://www.federalreserve.gov/newsevents/pressreleases/monetary20250917a.htm",
+        "https://www.federalreserve.gov/monetarypolicy/fomcprojtabl20250917.htm"
+      ],
+      "net_gains_until_next_decision": null
+    }
+  ],
+  "net_gains_until_next_decision": null
+}
