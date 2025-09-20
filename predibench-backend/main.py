@@ -11,6 +11,7 @@ from apscheduler.triggers.cron import (
 )
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 from predibench.agent.models import ModelInvestmentDecisions
 from predibench.backend.data_loader import (
     get_data_for_backend,
@@ -33,6 +34,11 @@ print("Successfully imported predibench modules")
 CACHED_DATA: list[
     BackendData
 ] = []  # A list is a common way to introduce a global variable
+
+
+class ContactFormSubmission(BaseModel):
+    email: str
+    message: str
 
 
 def load_backend() -> BackendData:
@@ -253,6 +259,28 @@ def get_decision_details_by_model_and_event_endpoint(
 ):
     """Get decision details for a specific model and event"""
     return load_event_decision_details_from_bucket(model_id, event_id, target_date)
+
+
+@app.post("/api/contact")
+def submit_contact_form(submission: ContactFormSubmission):
+    """Save contact form submission to storage"""
+    try:
+        timestamp = datetime.now().isoformat()
+        contact_data = {
+            "email": submission.email,
+            "message": submission.message,
+            "timestamp": timestamp,
+        }
+
+        filename = f"reach_out/{timestamp.replace(':', '-')}.json"
+        file_path = DATA_PATH / filename
+
+        write_to_storage(file_path, json.dumps(contact_data, indent=2))
+
+        return {"status": "success", "message": "Contact form submitted successfully"}
+    except Exception as e:
+        print(f"Error saving contact form: {e}")
+        raise HTTPException(status_code=500, detail="Failed to save contact form")
 
 
 if __name__ == "__main__":
