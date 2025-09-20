@@ -21,7 +21,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 from predibench.backend.data_loader import get_data_for_backend
-from predibench.utils import apply_template
+from predibench.utils import apply_template, get_model_color
 from predibench.common import FRONTEND_PUBLIC_PATH
 
 
@@ -291,30 +291,6 @@ def create_price_adjustment_visualization(price_volatility_df: pd.DataFrame) -> 
     return fig
 
 
-def get_model_color(model_name: str, model_index: int) -> str:
-    """Get consistent color for model with high contrast for comparisons."""
-    # High contrast colors for key comparisons
-    if "GPT-5 Mini" in model_name:
-        return "#FF0000"  # Bright red for GPT-5 Mini
-    elif "GPT-5" in model_name:
-        return "#0000FF"  # Bright blue for GPT-5
-    elif "GPT-OSS 120B" in model_name:
-        return "#00FF00"  # Bright green for GPT-OSS 120B
-    elif "Sonar Deep Research" in model_name:
-        return "#800080"  # Purple for Sonar Deep Research
-    elif any(name in model_name for name in ["Gemini 2.5 Flash"]):
-        return "#FF8C00"  # Dark orange for Gemini Flash
-    elif any(name in model_name for name in ["GPT-4.1"]):
-        return "#FF1493"  # Deep pink for GPT-4.1
-    elif any(name in model_name for name in ["Qwen3 235B"]):
-        return "#32CD32"  # Lime green for Qwen3 235B
-    elif any(name in model_name for name in ["Claude", "Grok", "DeepSeek", "Gemini 2.5 Pro"]):
-        return "#FFA500"  # Orange for Claude/Grok/DeepSeek/Gemini Pro
-    else:
-        # High contrast colors for remaining models
-        additional_colors = ["#800000", "#008080", "#000080", "#808000", "#8B4513"]
-        return additional_colors[model_index % len(additional_colors)]
-
 
 def create_edge_vs_bet_scatter(bet_edge_df: pd.DataFrame) -> go.Figure:
     """Create scatter plot of edge vs bet amount."""
@@ -328,7 +304,7 @@ def create_edge_vs_bet_scatter(bet_edge_df: pd.DataFrame) -> go.Figure:
 
     for i, model_name in enumerate(bet_edge_df["model_name"].unique()):
         model_data = bet_edge_df[bet_edge_df["model_name"] == model_name]
-        color = get_model_color(model_name, i)
+        color = get_model_color(model_name)
 
         fig.add_trace(
             go.Scatter(
@@ -373,53 +349,12 @@ def create_consistency_rate_chart(bet_edge_df: pd.DataFrame) -> go.Figure:
         apply_template(fig, title="Bet-Edge Consistency Rate by Model", width=1000, height=600)
         return fig
 
-    # Provider color dictionary - more accurate mapping
-    PROVIDER_COLORS = {
-        "Anthropic": "#00CED1",      # Dark Turquoise (Claude models)
-        "OpenAI": "#FF6347",          # Tomato Red (GPT models)
-        "Google": "#4169E1",          # Royal Blue (Gemini models)
-        "xAI": "#9932CC",             # Dark Orchid (Grok models)
-        "Meta": "#FF8C00",            # Dark Orange (Llama models)
-        "DeepSeek": "#FFD700",        # Gold (DeepSeek models)
-        "Alibaba": "#32CD32",         # Lime Green (Qwen models)
-        "Perplexity": "#2E8B57",      # Sea Green (Sonar models)
-        "OpenSource": "#FF1493",      # Deep Pink (GPT-OSS models)
-        "Groq": "#DC143C",            # Crimson (if using Groq)
-        "Default": "#696969"          # Dim Gray for any unknown
-    }
-
     consistency_by_model = bet_edge_df.groupby("model_name")["consistent"].agg(["mean", "count"]).reset_index()
     consistency_by_model = consistency_by_model[consistency_by_model["count"] >= 10]  # Filter models with enough data
     consistency_by_model = consistency_by_model.sort_values("mean", ascending=True)
 
-    # Add provider column based on model name - more accurate mapping
-    def get_provider(model_name):
-        if "Claude" in model_name:
-            return "Anthropic"
-        elif "GPT-5" in model_name or "GPT-4" in model_name:
-            return "OpenAI"
-        elif "GPT-OSS" in model_name:
-            return "OpenSource"
-        elif "Gemini" in model_name:
-            return "Google"
-        elif "Grok" in model_name:
-            return "xAI"
-        elif "Llama" in model_name:
-            return "Meta"
-        elif "DeepSeek" in model_name:
-            return "DeepSeek"
-        elif "Qwen" in model_name:
-            return "Alibaba"
-        elif "Sonar" in model_name:
-            return "Perplexity"
-        else:
-            return "Default"
-
-    consistency_by_model["provider"] = consistency_by_model["model_name"].apply(get_provider)
-
-    # Map colors based on provider
-    colors = [PROVIDER_COLORS.get(provider, PROVIDER_COLORS["Default"])
-              for provider in consistency_by_model["provider"]]
+    # Use brand colors from utils
+    colors = [get_model_color(model_name) for model_name in consistency_by_model["model_name"]]
 
     fig.add_trace(
         go.Bar(
@@ -509,7 +444,7 @@ def create_probability_calibration_chart(bet_edge_df: pd.DataFrame) -> go.Figure
 
     for i, model_name in enumerate(bet_edge_df["model_name"].unique()):
         model_data = bet_edge_df[bet_edge_df["model_name"] == model_name]
-        color = get_model_color(model_name, i)
+        color = get_model_color(model_name)
 
         fig.add_trace(
             go.Scatter(
@@ -989,7 +924,7 @@ def create_bet_amount_vs_confidence_chart_single_model(bet_edge_df: pd.DataFrame
         apply_template(fig, width=600, height=500)
         return fig
 
-    color = get_model_color(model_name, 0)
+    color = get_model_color(model_name)
 
     fig.add_trace(
         go.Scatter(
@@ -1042,7 +977,7 @@ def create_probability_calibration_chart_single_model(bet_edge_df: pd.DataFrame,
         apply_template(fig, width=600, height=500)
         return fig
 
-    color = get_model_color(model_name, 0)
+    color = get_model_color(model_name)
 
     fig.add_trace(
         go.Scatter(
@@ -1117,7 +1052,7 @@ def create_bet_amount_vs_confidence_chart_filtered(bet_edge_df: pd.DataFrame, mo
         if len(model_data) == 0:
             continue
 
-        color = get_model_color(model_name, i)
+        color = get_model_color(model_name)
 
         fig.add_trace(
             go.Scatter(
@@ -1175,7 +1110,7 @@ def create_probability_calibration_chart_filtered(bet_edge_df: pd.DataFrame, mod
         if len(model_data) == 0:
             continue
 
-        color = get_model_color(model_name, i)
+        color = get_model_color(model_name)
 
         fig.add_trace(
             go.Scatter(
@@ -1247,7 +1182,7 @@ def create_bet_amount_vs_confidence_chart(bet_edge_df: pd.DataFrame, edge_thresh
         if len(model_data) == 0:
             continue
 
-        color = get_model_color(model_name, i)
+        color = get_model_color(model_name)
 
         fig.add_trace(
             go.Scatter(
@@ -1331,7 +1266,7 @@ def create_decision_consistency_over_time_chart(bet_edge_df: pd.DataFrame) -> go
         vertical_spacing=0.12
     )
 
-    model_color_map = {model: get_model_color(model, i) for i, model in enumerate(bet_edge_df["model_name"].unique())}
+    model_color_map = {model: get_model_color(model) for model in bet_edge_df["model_name"].unique()}
 
     # Plot time series for each model-event combination
     for item in multi_decision_events[:20]:  # Limit to top 20 for readability
@@ -1547,7 +1482,7 @@ def create_calibration_trends_visualization(bet_edge_df: pd.DataFrame) -> go.Fig
 
     for i, model_name in enumerate(trends_df["model_name"].unique()):
         model_data = trends_df[trends_df["model_name"] == model_name]
-        color = get_model_color(model_name, i)
+        color = get_model_color(model_name)
 
         fig.add_trace(
             go.Scatter(

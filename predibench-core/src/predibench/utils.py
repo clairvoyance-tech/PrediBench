@@ -10,6 +10,57 @@ logger = get_logger(__name__)
 FONT_FAMILY = "Arial"
 BOLD_FONT_FAMILY = "Arial"
 
+AI_MODEL_BRAND_COLORS = {
+    "xAI": "#1a1a1a",        # Very dark gray (almost black) for xAI
+    "OpenAI": "#d3d3d3",     # Light gray for OpenAI
+    "Qwen": "#8B5CF6",
+    "DeepSeek": "#0D28F3",
+    "Meta": "#0082FB",
+    "Google": "#4285F4",
+    "Perplexity": "#30b8c6",
+    "Anthropic": "#CC785C",
+    "Baseline": "#808080",
+}
+
+
+def get_model_color(model_name: str) -> str:
+    """Get the brand color for an AI model provider.
+
+    Args:
+        model_name: Name of the AI model or provider
+
+    Returns:
+        Hex color code for the model's brand color, defaults to gray if not found
+    """
+    # Handle common model name variations and extract provider name
+    model_lower = model_name.lower()
+
+    # Direct matches
+    for provider, color in AI_MODEL_BRAND_COLORS.items():
+        if provider.lower() in model_lower:
+            return color
+
+    # Handle specific model patterns
+    if "gpt" in model_lower or "chatgpt" in model_lower:
+        return AI_MODEL_BRAND_COLORS["OpenAI"]
+    elif "claude" in model_lower:
+        return AI_MODEL_BRAND_COLORS["Anthropic"]
+    elif "llama" in model_lower:
+        return AI_MODEL_BRAND_COLORS["Meta"]
+    elif "gemini" in model_lower or "bard" in model_lower:
+        return AI_MODEL_BRAND_COLORS["Google"]
+    elif "qwen" in model_lower:
+        return AI_MODEL_BRAND_COLORS["Qwen"]
+    elif "deepseek" in model_lower:
+        return AI_MODEL_BRAND_COLORS["DeepSeek"]
+    elif "grok" in model_lower:
+        return AI_MODEL_BRAND_COLORS["xAI"]
+    elif "baseline" in model_lower:
+        return AI_MODEL_BRAND_COLORS["Baseline"]
+
+    # Default to gray for unknown models
+    return "#808080"
+
 
 def date_to_string(date: datetime) -> str:
     """Convert a datetime object to YYYY-MM-DD string format."""
